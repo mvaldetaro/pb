@@ -1,33 +1,49 @@
 import React, {Component} from 'react';
 import {Grid, TextField} from "@material-ui/core";
-import * as contentful from 'contentful';
 import Game from '../componentes/Game';
-
-const SPACE_ID = 'ongu3hs7kbti';
-const ACCESS_TOKEN = '19f207052000c4c451e563e240b70b37d5a1d962d84498d95b77512d45814ac8';
-
-const client = contentful.createClient({space: SPACE_ID, accessToken: ACCESS_TOKEN});
+import axios from "axios";
+import WP from "../classes/WP";
 
 class GamesList extends Component {
-  state = {
-    games: [],
-    searchString: ''
+
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      games: [],
+      searchString: ''
+    };
+  };
+
+  mapGame(game) {
+    return {
+      id: game.id,
+      slug: game.slug,
+      thumbnail: game.better_featured_image.media_details.sizes.thumbnail.source_url,
+      title: game.title.rendered,
+      excerpt: game.excerpt.rendered,
+      plataforma: game.acf.datas_plataforma[0].plataforma.post_title
+    }
   }
 
-  constructor() {
-    super();
-    this.getGames()
+  componentDidMount() {
+    this.getGames();
   }
 
   getGames = () => {
-    client
-      .getEntries({content_type: 'games', query: this.state.searchString})
-      .then((response) => {
-        this.setState({games: response.items})
-      })
-      .catch((error) => {
-        console.log("Ocorreu um erro enquanto fetching data");
-        console.error(error);
+    axios
+      .get(WP.url + WP.types.games, {
+      params: {
+        search: this.state.searchString
+      }
+    })
+      .then(resp => {
+        console.log(resp.data);
+        this.setState({
+          games: resp
+            .data
+            .map(this.mapGame)
+        })
       });
   }
 
@@ -51,12 +67,13 @@ class GamesList extends Component {
                 placeholder="Buscar por Games"
                 margin="normal"
                 onChange={this.onSearchInputChange}/>
+
               <Grid container spacing={24}>
                 {this
                   .state
                   .games
-                  .map(currentGame => (
-                    <Grid item xs={12} sm={6} lg={4} xl={3}>
+                  .map((currentGame, i) => (
+                    <Grid item xs={12} sm={6} lg={4} xl={3} key={i}>
                       <Game game={currentGame}></Game>
                     </Grid>
                   ))}

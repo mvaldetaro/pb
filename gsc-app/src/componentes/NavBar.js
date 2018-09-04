@@ -7,10 +7,7 @@ const NavBar = () => {
     <div>
       <AppBar position="static">
         <Toolbar>
-          <Typography variant="title" color="inherit">
-            Games Social Club
-          </Typography>
-
+          <Link to="/">Games Social Club</Link>
           <Link to="/browse">Games</Link>
           <Link to="/calendar">Calendário</Link>
           <Link to="/blog">Blog</Link>
