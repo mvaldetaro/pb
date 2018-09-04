@@ -1,8 +1,9 @@
-import React, {Component} from 'react';
+import React, {Component, Fragment} from 'react';
 import ReactDOM from "react-dom";
 import './App.css';
 import axios from "axios";
 import WP from "./classes/WP";
+import Html from "./componentes/Html";
 
 class GameDetails extends Component {
 
@@ -58,11 +59,32 @@ class GameDetails extends Component {
   }
 
   render() {
-    const {slug} = this.state;
+    const {
+      id,
+      slug,
+      title,
+      content,
+      plataforma,
+      cover,
+      lancamento,
+      desenvolvedores,
+      publicadoras,
+      podcasts,
+      reviews,
+      revistas,
+      screenshots,
+      storyline,
+      videos,
+      wikipedia
+    } = this.state.currentGame;
 
     return (
       <section className="game-details">
-        <p>GAME {slug}</p>
+        <img src={cover} alt={title}/>
+        <h1>{title}</h1>
+
+        <Html html={content}/>
+
       </section>
     );
   }
