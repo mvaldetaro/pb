@@ -5,6 +5,8 @@ import axios from "axios";
 import WP from "./classes/WP";
 import Html from "./componentes/Html";
 
+import Reviews from "./componentes/Reviews";
+
 class GameDetails extends Component {
 
   constructor(props) {
@@ -51,7 +53,6 @@ class GameDetails extends Component {
       }
     })
       .then(resp => {
-        console.log(resp.data);
         this.setState({
           currentGame: this.mapGame(resp.data[0])
         })
@@ -81,10 +82,11 @@ class GameDetails extends Component {
     return (
       <section className="game-details">
         <img src={cover} alt={title}/>
+        <p>{plataforma}</p>
         <h1>{title}</h1>
 
         <Html html={content}/>
-
+        <Reviews data={reviews}/>
       </section>
     );
   }
