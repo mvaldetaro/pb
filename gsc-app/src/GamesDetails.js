@@ -8,6 +8,7 @@ import Reviews from "./componentes/Reviews/Reviews";
 import Screenshots from './componentes/Screenshots/Screenshots';
 import Videos from './componentes/Videos/Videos';
 import Podcasts from "./componentes/Podcasts/Podcasts";
+import Publishers from "./componentes/Publishers/Publishers";
 
 class GameDetails extends Component {
 
@@ -95,6 +96,7 @@ class GameDetails extends Component {
         <Screenshots data={screenshots}/>
         <Videos data={videos}/>
         <Podcasts data={podcasts}/>
+        <Publishers data={publicadoras}/>
       </section>
     );
   }
