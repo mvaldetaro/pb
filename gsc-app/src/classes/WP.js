@@ -1,5 +1,3 @@
-import axios from "axios";
-
 export default {
 
   url : 'http://54.232.226.251/service/wp-json/wp/v2/',
@@ -20,8 +18,7 @@ export default {
   },
 
   getContentByType(type) {
-    let endpoint = this.url + this.types[type];
-    var res = [];
+    //let endpoint = this.url + this.types[type]; var res = [];
 
     /*axios
       .get(endpoint)

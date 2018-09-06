@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import {Grid, TextField} from "@material-ui/core";
 import Review from "./Review";
 
 class Reviews extends Component {

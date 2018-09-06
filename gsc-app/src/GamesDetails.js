@@ -1,11 +1,13 @@
-import React, {Component, Fragment} from 'react';
-import ReactDOM from "react-dom";
+import React, {Component} from 'react';
 import './App.css';
 import axios from "axios";
 import WP from "./classes/WP";
 import Html from "./componentes/Html";
 
-import Reviews from "./componentes/Reviews";
+import Reviews from "./componentes/Reviews/Reviews";
+import Screenshots from './componentes/Screenshots/Screenshots';
+import Videos from './componentes/Videos/Videos';
+import Podcasts from "./componentes/Podcasts/Podcasts";
 
 class GameDetails extends Component {
 
@@ -35,7 +37,7 @@ class GameDetails extends Component {
       lancamento: game.acf.lancamento,
       desenvolvedores: game.acf.desenvolvedora,
       publicadoras: game.acf.publicadoras,
-      podcasts: game.acf.podacasts,
+      podcasts: game.acf.podcasts,
       reviews: game.acf.reviews,
       revistas: game.acf.revistas_relacionadas,
       screenshots: game.acf.screenshots,
@@ -53,6 +55,7 @@ class GameDetails extends Component {
       }
     })
       .then(resp => {
+        console.log(this.mapGame(resp.data[0]));
         this.setState({
           currentGame: this.mapGame(resp.data[0])
         })
@@ -84,9 +87,14 @@ class GameDetails extends Component {
         <img src={cover} alt={title}/>
         <p>{plataforma}</p>
         <h1>{title}</h1>
-
         <Html html={content}/>
+        <a href={wikipedia} target="_blank" rel="external">Wikipedia</a>
+        <h2>Storyline</h2>
+        <Html html={storyline}/>
         <Reviews data={reviews}/>
+        <Screenshots data={screenshots}/>
+        <Videos data={videos}/>
+        <Podcasts data={podcasts}/>
       </section>
     );
   }

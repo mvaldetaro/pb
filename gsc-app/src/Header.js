@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import ReactDOM from "react-dom";
 import NavBar from './componentes/NavBar';
 
 class Header extends Component {
