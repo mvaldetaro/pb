@@ -1,5 +1,5 @@
 import React, {Component, Fragment} from 'react';
-import Html from './Html';
+import Html from '../Html';
 
 class Review extends Component {
 
@@ -13,7 +13,6 @@ class Review extends Component {
   };
 
   componentDidMount() {
-    console.log(this.props.review)
     this.setState({review: this.props.review})
   }
 
@@ -23,6 +22,7 @@ class Review extends Component {
 
     return (
       <div>
+        <h2>Reviews</h2>
         {this.state.review
           ? (
             <Fragment>
