@@ -9,6 +9,8 @@ import Screenshots from './componentes/Screenshots/Screenshots';
 import Videos from './componentes/Videos/Videos';
 import Podcasts from "./componentes/Podcasts/Podcasts";
 import Publishers from "./componentes/Publishers/Publishers";
+import Lancamentos from './componentes/Lancamentos/Lancamentos';
+import Plataformas from './componentes/Plataformas/Plataformas';
 
 class GameDetails extends Component {
 
@@ -33,9 +35,9 @@ class GameDetails extends Component {
       title: game.title.rendered,
       excerpt: game.excerpt.rendered,
       content: game.content.rendered,
-      plataforma: game.acf.datas_plataforma[0].plataforma.post_title,
+      plataformas: game.acf.datas_plataforma,
       cover: game.acf.cover,
-      lancamento: game.acf.lancamento,
+      lancamentos: game.acf.datas_plataforma,
       desenvolvedores: game.acf.desenvolvedora,
       publicadoras: game.acf.publicadoras,
       podcasts: game.acf.podcasts,
@@ -44,7 +46,11 @@ class GameDetails extends Component {
       screenshots: game.acf.screenshots,
       storyline: game.acf.storyline,
       videos: game.acf.videos,
-      wikipedia: game.acf.wikipedia_page
+      wikipedia: game.acf.wikipedia_page,
+      franquia: game.acf.franquia,
+      nomes_alternativos: game.acf.nomes_alternativos,
+      classificacao: game.acf.classificacao_etaria,
+      creditos: game.acf.creditos
     }
   }
 
@@ -69,9 +75,9 @@ class GameDetails extends Component {
       slug,
       title,
       content,
-      plataforma,
+      plataformas,
       cover,
-      lancamento,
+      lancamentos,
       desenvolvedores,
       publicadoras,
       podcasts,
@@ -80,23 +86,37 @@ class GameDetails extends Component {
       screenshots,
       storyline,
       videos,
-      wikipedia
+      wikipedia,
+      franquia,
+      nomes_alternativos,
+      classificacao,
+      creditos
     } = this.state.currentGame;
 
     return (
       <section className="game-details">
+
         <img src={cover} alt={title}/>
-        <p>{plataforma}</p>
         <h1>{title}</h1>
         <Html html={content}/>
+        <Plataformas data={plataformas}/>
         <a href={wikipedia} target="_blank" rel="external">Wikipedia</a>
+
         <h2>Storyline</h2>
         <Html html={storyline}/>
+        <p>
+          <b>Franquia:</b><br/> {franquia}</p>
+
+        <p>
+          <b>Nomes alternativos:</b><br/> {nomes_alternativos}</p>
+
         <Reviews data={reviews}/>
         <Screenshots data={screenshots}/>
         <Videos data={videos}/>
         <Podcasts data={podcasts}/>
         <Publishers data={publicadoras}/>
+        <Lancamentos data={lancamentos}/>
+
       </section>
     );
   }
