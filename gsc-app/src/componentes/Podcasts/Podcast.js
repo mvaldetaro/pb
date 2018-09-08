@@ -22,10 +22,14 @@ class Podcast extends Component {
     return (
       <Fragment>
         <a href={url_podcasts}>
-          <img src={thumbnail_podcasts} alt={titulo_podcasts} width='200px'/>
+          <img
+            src={thumbnail_podcasts
+            ? thumbnail_podcasts
+            : undefined}
+            alt={titulo_podcasts}
+            width='200px'/>
         </a>
         <h3>{titulo_podcasts}</h3>
-
       </Fragment>
     )
   }
