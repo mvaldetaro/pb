@@ -11,6 +11,7 @@ import Podcasts from "./componentes/Podcasts/Podcasts";
 import Publishers from "./componentes/Publishers/Publishers";
 import Lancamentos from './componentes/Lancamentos/Lancamentos';
 import Plataformas from './componentes/Plataformas/Plataformas';
+import Revistas from "./componentes/Revistas/Revistas";
 
 class GameDetails extends Component {
 
@@ -116,6 +117,7 @@ class GameDetails extends Component {
         <Podcasts data={podcasts}/>
         <Publishers data={publicadoras}/>
         <Lancamentos data={lancamentos}/>
+        <Revistas data={revistas}/>
 
       </section>
     );
