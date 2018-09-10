@@ -14,8 +14,15 @@ class Publishers extends Component {
 
   componentDidUpdate(prevProps) {
     if (this.props.data !== prevProps.data) {
-      this.setState({publishers: this.props.data})
+      this.setState({
+        publishers: this.mapPublishers(this.props.data)
+      })
     }
+  }
+
+  mapPublishers(arr) {
+    let map = arr.map((current, i) => ({"slug": current.publicadora.slug, "type": current.publicadora.type, "title": current.publicadora.title.rendered}));
+    return map;
   }
 
   render() {

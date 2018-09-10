@@ -9,7 +9,7 @@ class Lancamento extends Component {
   };
 
   componentDidMount() {
-    this.setState(this.mapLancamento(this.props.lancamento))
+    this.setState(this.props.lancamento);
   }
 
   mapLancamento(data) {
@@ -18,11 +18,11 @@ class Lancamento extends Component {
 
   render() {
 
-    const {data_lancamento, slug, title, type} = this.state;
+    const {lancamento, slug, title, type} = this.state;
 
     return (
       <Fragment>
-        {data_lancamento}
+        {lancamento}
         <Link to={`/${type}/${slug}`}>{title}</Link>
       </Fragment>
     )

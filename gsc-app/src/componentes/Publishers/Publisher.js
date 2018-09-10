@@ -9,16 +9,16 @@ class Publisher extends Component {
   };
 
   componentDidMount() {
-    this.setState(this.props.publisher.publicadora)
+    this.setState(this.props.publisher)
   }
 
   render() {
 
-    const {post_name, post_title, post_type} = this.state;
+    const {slug, title, type} = this.state;
 
     return (
       <Fragment>
-        <Link to={`/${post_type}/${post_name}`}>{post_title}</Link>
+        <Link to={`/${type}/${slug}`}>{title}</Link>
       </Fragment>
     )
   }

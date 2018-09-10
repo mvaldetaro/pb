@@ -13,7 +13,7 @@ class Plataformas extends Component {
   };
 
   mapPlataformas(arr) {
-    let map = arr.map((currentPlataforma, i) => ({"slug": currentPlataforma.plataforma.post_name, "type": currentPlataforma.plataforma.post_type, "title": currentPlataforma.plataforma.post_title}));
+    let map = arr.map((currentPlataforma, i) => ({"slug": currentPlataforma.plataforma.slug, "type": currentPlataforma.plataforma.type, "title": currentPlataforma.plataforma.title.rendered}));
 
     return map;
   }

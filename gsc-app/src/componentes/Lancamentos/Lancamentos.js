@@ -9,17 +9,21 @@ class Lancamentos extends Component {
     this.state = {
       lancamentos: []
     };
-
+    console.log(props);
   };
 
   componentDidUpdate(prevProps) {
     if (this.props.data !== prevProps.data) {
-      this.setState({lancamentos: this.props.data})
+      this.setState({
+        lancamentos: this.mapLancamentos(this.props.data)
+      });
+      console.log(this.props);
     }
   }
 
-  mapLancamento(data) {
-    return {slug: data.plataforma.post_name, title: data.plataforma.post_title, data_lancamento: data.data_lancamento, type: data.plataforma.post_type}
+  mapLancamentos(arr) {
+    let map = arr.map((currentLancamento, i) => ({"lancamento": currentLancamento.data_lancamento, "slug": currentLancamento.plataforma.slug, "type": currentLancamento.plataforma.type, "title": currentLancamento.plataforma.title.rendered}));
+    return map;
   }
 
   render() {
