@@ -12,6 +12,7 @@ import Publishers from "./componentes/Publishers/Publishers";
 import Lancamentos from './componentes/Lancamentos/Lancamentos';
 import Plataformas from './componentes/Plataformas/Plataformas';
 import Revistas from "./componentes/Revistas/Revistas";
+import Developers from "./componentes/Developers/Developers";
 
 class GameDetails extends Component {
 
@@ -39,7 +40,7 @@ class GameDetails extends Component {
       plataformas: game.acf.datas_plataforma,
       cover: game.acf.cover,
       lancamentos: game.acf.datas_plataforma,
-      desenvolvedores: game.acf.desenvolvedora,
+      desenvolvedoras: game.acf.desenvolvedores,
       publicadoras: game.acf.publicadoras,
       podcasts: game.acf.podcasts,
       reviews: game.acf.reviews,
@@ -63,7 +64,7 @@ class GameDetails extends Component {
       }
     })
       .then(resp => {
-        console.log(this.mapGame(resp.data[0]));
+        console.log(resp.data[0]);
         this.setState({
           currentGame: this.mapGame(resp.data[0])
         })
@@ -72,14 +73,12 @@ class GameDetails extends Component {
 
   render() {
     const {
-      id,
-      slug,
       title,
       content,
       plataformas,
       cover,
       lancamentos,
-      desenvolvedores,
+      desenvolvedoras,
       publicadoras,
       podcasts,
       reviews,
@@ -118,6 +117,7 @@ class GameDetails extends Component {
         <Publishers data={publicadoras}/>
         <Lancamentos data={lancamentos}/>
         <Revistas data={revistas}/>
+        <Developers data={desenvolvedoras}/>
 
       </section>
     );
