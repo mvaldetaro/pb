@@ -13,6 +13,8 @@ import Lancamentos from './componentes/Lancamentos/Lancamentos';
 import Plataformas from './componentes/Plataformas/Plataformas';
 import Revistas from "./componentes/Revistas/Revistas";
 import Developers from "./componentes/Developers/Developers";
+import Classificacoes from './componentes/Classificacoes/Classificacoes';
+import Pessoas from "./componentes/Pessoas/Pessoas";
 
 class GameDetails extends Component {
 
@@ -118,7 +120,8 @@ class GameDetails extends Component {
         <Lancamentos data={lancamentos}/>
         <Revistas data={revistas}/>
         <Developers data={desenvolvedoras}/>
-
+        <Classificacoes data={classificacao}/>
+        <Pessoas data={creditos}/>
       </section>
     );
   }
