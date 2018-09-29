@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
-import Header from "./Header";
-import Main from './Main';
+import Header from "./template/Header";
+import Main from './views/Main';
 import './App.css';
 
 class App extends Component {

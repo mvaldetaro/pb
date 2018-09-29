@@ -1,14 +1,13 @@
 import React, {Component} from 'react';
-import './App.css';
 
-class Calendar extends Component {
+class Page404 extends Component {
   render() {
     return (
       <div className="app">
-        <p>Calendar</p>
+        <p>404</p>
       </div>
     );
   }
 }
 
-export default Calendar;
+export default Page404;

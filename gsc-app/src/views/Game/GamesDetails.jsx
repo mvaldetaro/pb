@@ -1,20 +1,33 @@
 import React, {Component} from 'react';
-import './App.css';
 import axios from "axios";
-import WP from "./classes/WP";
-import Html from "./componentes/Html";
+import WP from "../../core/WP";
+// import Html from "../../componentes/Utils/Html"; import Reviews from
+// "../../componentes/Reviews/Reviews"; import Screenshots from
+// '../../componentes/Screenshots/Screenshots'; import Videos from
+// '../../componentes/Videos/Videos'; import Podcasts from
+// "../../componentes/Podcasts/Podcasts"; import Publishers from
+// "../../componentes/Publishers/Publishers"; import Lancamentos from
+// '../../componentes/Lancamentos/Lancamentos'; import Plataformas from
+// '../../componentes/Plataformas/Plataformas'; import Revistas from
+// "../../componentes/Revistas/Revistas"; import Developers from
+// "../../componentes/Developers/Developers"; import Classificacoes from
+// '../../componentes/Classificacoes/Classificacoes'; import Pessoas from
+// "../../componentes/Pessoas/Pessoas";
 
-import Reviews from "./componentes/Reviews/Reviews";
-import Screenshots from './componentes/Screenshots/Screenshots';
-import Videos from './componentes/Videos/Videos';
-import Podcasts from "./componentes/Podcasts/Podcasts";
-import Publishers from "./componentes/Publishers/Publishers";
-import Lancamentos from './componentes/Lancamentos/Lancamentos';
-import Plataformas from './componentes/Plataformas/Plataformas';
-import Revistas from "./componentes/Revistas/Revistas";
-import Developers from "./componentes/Developers/Developers";
-import Classificacoes from './componentes/Classificacoes/Classificacoes';
-import Pessoas from "./componentes/Pessoas/Pessoas";
+import {
+  Reviews,
+  Screenshots,
+  Videos,
+  Podcasts,
+  Publishers,
+  Lancamentos,
+  Plataformas,
+  Revistas,
+  Developers,
+  Classificacoes,
+  Pessoas,
+  Utils as Html
+} from "../../componentes";
 
 class GameDetails extends Component {
 

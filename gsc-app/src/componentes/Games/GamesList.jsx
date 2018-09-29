@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 import {Grid, TextField} from "@material-ui/core";
-import Game from '../componentes/Game';
+import Game from './Game';
 import axios from "axios";
-import WP from "../classes/WP";
+import WP from "../../core/WP";
 
 class GamesList extends Component {
 

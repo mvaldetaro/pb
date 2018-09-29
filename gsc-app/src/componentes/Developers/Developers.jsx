@@ -15,14 +15,17 @@ class Developers extends Component {
   componentDidUpdate(prevProps) {
     if (this.props.data !== prevProps.data) {
       this.setState({
-        desenvolvedora: this.mapPublishers(this.props.data)
+        desenvolvedora: this.mapDevelopers(this.props.data)
       })
     }
   }
 
-  mapPublishers(arr) {
-    let map = arr.map((current, i) => ({"slug": current.desenvolvedor.slug, "type": current.desenvolvedor.type, "title": current.desenvolvedor.title.rendered}));
-    return map;
+  mapDevelopers(arr) {
+    let mapy = []
+    if (arr) {
+      mapy = arr.map((current, i) => ({"slug": current.desenvolvedor.slug, "type": current.desenvolvedor.type, "title": current.desenvolvedor.title.rendered}));
+    }
+    return mapy;
   }
 
   render() {

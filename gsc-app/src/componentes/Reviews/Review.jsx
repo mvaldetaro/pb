@@ -1,5 +1,5 @@
 import React, {Component, Fragment} from 'react';
-import Html from '../Html';
+import Html from '../Utils/Html';
 
 class Review extends Component {
 

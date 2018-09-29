@@ -21,8 +21,11 @@ class Publishers extends Component {
   }
 
   mapPublishers(arr) {
-    let map = arr.map((current, i) => ({"slug": current.publicadora.slug, "type": current.publicadora.type, "title": current.publicadora.title.rendered}));
-    return map;
+    let mapy = []
+    if (arr) {
+      mapy = arr.map((current, i) => ({"slug": current.publicadora.slug, "type": current.publicadora.type, "title": current.publicadora.title.rendered}));
+    }
+    return mapy;
   }
 
   render() {

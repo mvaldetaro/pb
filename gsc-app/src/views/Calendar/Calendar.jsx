@@ -1,14 +1,13 @@
 import React, {Component} from 'react';
-import './App.css';
 
-class BrowseGames extends Component {
+class Calendar extends Component {
   render() {
     return (
       <div className="app">
-        <p>BrowseGames</p>
+        <p>Calendar</p>
       </div>
     );
   }
 }
 
-export default BrowseGames;
+export default Calendar;
