@@ -1,21 +1,23 @@
 import React, {Component} from 'react';
-import {Grid, TextField} from "@material-ui/core";
+import {Grid} from "@material-ui/core";
 import Game from './Game';
-import axios from "axios";
-import WP from "../../core/WP";
+import {connect} from 'react-redux';
+import {bindActionCreators} from "redux";
+
+import {getGames} from "./GamesListActions";
 
 class GamesList extends Component {
 
-  constructor(props) {
+  /*constructor(props) {
     super(props);
 
     this.state = {
       games: [],
       searchString: ''
     };
-  };
+  };*/
 
-  mapGame(game) {
+  /*mapGame(game) {
     return {
       id: game.id,
       slug: game.slug,
@@ -24,13 +26,9 @@ class GamesList extends Component {
       excerpt: game.excerpt.rendered,
       plataforma: game.acf.datas_plataforma[0].plataforma.post_title
     }
-  }
+  }*/
 
-  componentDidMount() {
-    this.getGames();
-  }
-
-  getGames = () => {
+  /*getGames = () => {
     axios
       .get(WP.url + WP.types.games, {
       params: {
@@ -45,40 +43,39 @@ class GamesList extends Component {
             .map(this.mapGame)
         })
       });
+  }*/
+
+  componentWillMount() {
+    this
+      .props
+      .getGames(this.props.searchString);
   }
 
-  onSearchInputChange = (event) => {
-    if (event.target.value) {
-      this.setState({searchString: event.target.value})
-    } else {
-      this.setState({searchString: ''})
+  //componentDidUpdate(prevProps, prevState, snapshot) {
+
+  componentDidUpdate(prevProps) {
+    if (prevProps.searchString !== this.props.searchString) {
+      this
+        .props
+        .getGames(this.props.searchString);
     }
-    this.getGames();
   }
 
   render() {
     return (
-      <div>
-        {this.state.games
+      <div className="game-list">
+        {this.props.games
           ? (
-            <div>
-              <TextField
-                id="searchInput"
-                placeholder="Buscar por Games"
-                margin="normal"
-                onChange={this.onSearchInputChange}/>
-
-              <Grid container spacing={24}>
-                {this
-                  .state
-                  .games
-                  .map((currentGame, i) => (
-                    <Grid item xs={12} sm={6} lg={4} xl={3} key={i}>
-                      <Game game={currentGame}></Game>
-                    </Grid>
-                  ))}
-              </Grid>
-            </div>
+            <Grid container spacing={24}>
+              {this
+                .props
+                .games
+                .map((currentGame, i) => (
+                  <Grid item xs={12} sm={6} lg={4} xl={3} key={i}>
+                    <Game game={currentGame}></Game>
+                  </Grid>
+                ))}
+            </Grid>
           )
           : "Nenhum game encontrado"}
       </div>
@@ -86,4 +83,14 @@ class GamesList extends Component {
   }
 }
 
-export default GamesList;
+function mapStateToProps(state) {
+  return {searchString: state.search.searchString, games: state.games.games}
+}
+
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({
+    getGames
+  }, dispatch)
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(GamesList);

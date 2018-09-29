@@ -8,11 +8,9 @@ import Header from "./template/Header";
 import Main from './views/Main';
 import './App.css';
 
-//Ativa plugin REDUX no Chrome
 const devTools = window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__();
 
 const store = applyMiddleware(thunk)(createStore)(AppReducer, devTools);
-//const store = createStore(AppReducer, devTools);
 
 class App extends Component {
   render() {

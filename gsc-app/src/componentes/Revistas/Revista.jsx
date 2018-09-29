@@ -1,4 +1,4 @@
-import React, {Component, Fragment} from 'react';
+import React, {Component} from 'react';
 import {Link} from "react-router-dom";
 
 class Revista extends Component {
@@ -24,7 +24,7 @@ class Revista extends Component {
 
     return (
       <Link to={`/${type}/${slug}`}>
-        <img src={thumbnail
+        <img alt={title} src={thumbnail
           ? thumbnail
           : undefined}/> {title}</Link>
     )

@@ -1,7 +1,8 @@
 import {combineReducers} from 'redux'
 
-import HomeReducer from "./views/Home/HomeReducer";
+import SearchGameReducer from "./componentes/Games/GamesFilterBarReducer";
+import GamesList from "./componentes/Games/GamesListReducer";
 
-const AppReducer = combineReducers({home: HomeReducer})
+const AppReducer = combineReducers({search: SearchGameReducer, games: GamesList})
 
 export default AppReducer
