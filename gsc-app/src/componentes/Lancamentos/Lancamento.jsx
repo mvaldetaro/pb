@@ -3,7 +3,7 @@ import {Link} from "react-router-dom";
 
 class Lancamento extends Component {
 
-  constructor(props) {
+  /*constructor(props) {
     super(props);
     this.state = {};
   };
@@ -14,11 +14,11 @@ class Lancamento extends Component {
 
   mapLancamento(data) {
     return {slug: data.plataforma.post_name, title: data.plataforma.post_title, data_lancamento: data.data_lancamento, type: data.plataforma.post_type}
-  }
+  }*/
 
   render() {
 
-    const {lancamento, slug, title, type} = this.state;
+    const {lancamento, slug, title, type} = this.props.lancamento;
 
     return (
       <Fragment>

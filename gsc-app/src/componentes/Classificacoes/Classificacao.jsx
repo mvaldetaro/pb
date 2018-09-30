@@ -1,31 +1,16 @@
-import React, {Component, Fragment} from 'react';
+import React, {Component} from 'react';
 
-class Publisher extends Component {
-
-  constructor(props) {
-    super(props);
-    this.state = {};
-  };
-
-  componentDidMount() {
-    this.setState(this.props.selo)
-  }
-
+class Classificacao extends Component {
   render() {
+    const {image_src, alt, title} = this.props.currentselo;
 
-    const {image_src, alt, title} = this.state;
-
-    return (
-      <Fragment>
-        <img
-          src={image_src
-          ? image_src
-          : undefined}
-          alt={alt}
-          title={title}/>
-      </Fragment>
-    )
+    return (<img
+      src={image_src
+      ? image_src
+      : undefined}
+      alt={alt}
+      title={title}/>)
   }
 }
 
-export default Publisher;
+export default Classificacao;

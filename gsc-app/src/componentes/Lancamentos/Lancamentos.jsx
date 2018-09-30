@@ -3,7 +3,7 @@ import Lancamento from "./Lancamento";
 
 class Lancamentos extends Component {
 
-  constructor(props) {
+  /*constructor(props) {
     super(props);
 
     this.state = {
@@ -19,7 +19,7 @@ class Lancamentos extends Component {
       });
       console.log(this.props);
     }
-  }
+  }*/
 
   mapLancamentos(arr) {
     let map = arr.map((currentLancamento, i) => ({"lancamento": currentLancamento.data_lancamento, "slug": currentLancamento.plataforma.slug, "type": currentLancamento.plataforma.type, "title": currentLancamento.plataforma.title.rendered}));
@@ -30,12 +30,11 @@ class Lancamentos extends Component {
     return (
       <div>
         <h2>Lançamentos</h2>
-        {this.state.lancamentos
+        {this.props.data
           ? (
             <ul>
               {this
-                .state
-                .lancamentos
+                .mapLancamentos(this.props.data)
                 .map((currentLancamento, i) => (
                   <li key={i}>
                     <Lancamento lancamento={currentLancamento}/>

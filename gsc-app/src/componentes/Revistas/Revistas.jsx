@@ -3,7 +3,7 @@ import Revista from "./Revista";
 
 class Revistas extends Component {
 
-  constructor(props) {
+  /*constructor(props) {
     super(props);
 
     this.state = {
@@ -16,17 +16,23 @@ class Revistas extends Component {
     if (this.props.data !== prevProps.data) {
       this.setState({revistas: this.props.data})
     }
+  }*/
+
+  mapRevistas(arr) {
+    let map = arr.map((current, i) => ({"slug": current.revista.slug, "type": current.revista.type, "thumbnail": current.revista.better_featured_image.media_details.sizes.thumbnail.source_url, "title": current.revista.title.rendered}));
+    return map;
   }
 
   render() {
     return (
       <div>
-        {this.state.revistas
+        <h2>Revistas</h2>
+        {this.props.data
           ? (
+
             <ul>
               {this
-                .state
-                .revistas
+                .mapRevistas(this.props.data)
                 .map((currentRevista, i) => (
                   <li key={i}>
                     <Revista revista={currentRevista}/>

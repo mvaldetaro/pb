@@ -2,7 +2,7 @@ import React, {Component, Fragment} from 'react';
 
 class Podcast extends Component {
 
-  constructor(props) {
+  /*constructor(props) {
     super(props);
 
     this.state = {
@@ -13,11 +13,11 @@ class Podcast extends Component {
 
   componentDidMount() {
     this.setState(this.props.podcast)
-  }
+  }*/
 
   render() {
 
-    const {thumbnail_podcasts, titulo_podcasts, url_podcasts} = this.state;
+    const {thumbnail_podcasts, titulo_podcasts, url_podcasts} = this.props.podcast;
 
     return (
       <Fragment>

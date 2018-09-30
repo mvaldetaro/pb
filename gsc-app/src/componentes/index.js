@@ -1,3 +1,5 @@
+export {default as Cover}
+from './Cover';
 export {default as Classificacoes}
 from './Classificacoes';
 export {default as Developers}
@@ -15,11 +17,15 @@ from './Podcasts';
 export {default as Publishers}
 from './Publishers';
 export {default as Reviews}
+from './Resume';
+export {default as Resume}
 from './Reviews';
 export {default as Revistas}
 from './Revistas';
 export {default as Screenshots}
 from './Screenshots';
+export {default as Title}
+from './Title';
 export {default as Utils}
 from './Utils';
 export {default as Videos}

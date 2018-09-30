@@ -3,7 +3,7 @@ import Developer from "./Developer";
 
 class Developers extends Component {
 
-  constructor(props) {
+  /*constructor(props) {
     super(props);
 
     this.state = {
@@ -18,7 +18,7 @@ class Developers extends Component {
         desenvolvedora: this.mapDevelopers(this.props.data)
       })
     }
-  }
+  }*/
 
   mapDevelopers(arr) {
     let mapy = []
@@ -32,12 +32,11 @@ class Developers extends Component {
     return (
       <div>
         <h2>Desenvolvedora</h2>
-        {this.state.desenvolvedora
+        {this.props.data
           ? (
             <ul>
               {this
-                .state
-                .desenvolvedora
+                .mapDevelopers(this.props.data)
                 .map((currentDeveloper, i) => (
                   <li key={i}>
                     <Developer developer={currentDeveloper}/>

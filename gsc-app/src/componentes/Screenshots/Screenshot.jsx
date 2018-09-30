@@ -2,7 +2,7 @@ import React, {Component, Fragment} from 'react';
 
 class Screenshot extends Component {
 
-  constructor(props) {
+  /*constructor(props) {
     super(props);
 
     this.state = {
@@ -13,11 +13,11 @@ class Screenshot extends Component {
 
   componentDidMount() {
     this.setState({screenshot: this.props.screenshot})
-  }
+  }*/
 
   render() {
 
-    const {alt, url} = this.state.screenshot;
+    const {alt, url} = this.props.screenshot;
 
     return (
       <Fragment>

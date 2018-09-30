@@ -3,7 +3,7 @@ import Video from "./Video";
 
 class Videos extends Component {
 
-  constructor(props) {
+  /*constructor(props) {
     super(props);
 
     this.state = {
@@ -16,18 +16,18 @@ class Videos extends Component {
     if (this.props.data !== prevProps.data) {
       this.setState({videos: this.props.data})
     }
-  }
+  }*/
 
   render() {
     return (
       <div>
         <h2>Vídeos</h2>
-        {this.state.videos
+        {this.props.data
           ? (
             <ul>
               {this
-                .state
-                .videos
+                .props
+                .data
                 .map((currentVideo, i) => (
                   <li key={i}>
                     <Video video={currentVideo}/>

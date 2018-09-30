@@ -3,30 +3,29 @@ import Screenshot from "./Screenshot";
 
 class Screenshots extends Component {
 
-  constructor(props) {
+  /*constructor(props) {
     super(props);
 
     this.state = {
       screenshots: []
     };
-
   };
 
   componentDidUpdate(prevProps) {
     if (this.props.data !== prevProps.data) {
       this.setState({screenshots: this.props.data})
     }
-  }
+  }*/
 
   render() {
     return (
       <div>
-        {this.state.screenshots
+        {this.props.data
           ? (
             <ul>
               {this
-                .state
-                .screenshots
+                .props
+                .data
                 .map((currentScreenshot, i) => (
                   <li key={i}>
                     <Screenshot screenshot={currentScreenshot}/>

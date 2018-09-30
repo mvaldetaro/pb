@@ -3,7 +3,7 @@ import Publisher from "./Publisher";
 
 class Publishers extends Component {
 
-  constructor(props) {
+  /*constructor(props) {
     super(props);
 
     this.state = {
@@ -18,7 +18,7 @@ class Publishers extends Component {
         publishers: this.mapPublishers(this.props.data)
       })
     }
-  }
+  }*/
 
   mapPublishers(arr) {
     let mapy = []
@@ -32,12 +32,11 @@ class Publishers extends Component {
     return (
       <div>
         <h2>Publishers</h2>
-        {this.state.publishers
+        {this.props.data
           ? (
             <ul>
               {this
-                .state
-                .publishers
+                .mapPublishers(this.props.data)
                 .map((currentPublisher, i) => (
                   <li key={i}>
                     <Publisher publisher={currentPublisher}/>

@@ -3,22 +3,6 @@ import Classificacao from "./Classificacao";
 
 class Classificacoes extends Component {
 
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      selos: []
-    };
-  };
-
-  componentDidUpdate(prevProps) {
-    if (this.props.data !== prevProps.data) {
-      this.setState({
-        selos: this.mapClassificacoes(this.props.data)
-      })
-    }
-  }
-
   mapClassificacoes(arr) {
     let map = arr.map((current, i) => ({"image_src": current.selo.better_featured_image.source_url, "alt": current.selo.alt_text, "title": current.selo.title.rendered}));
     return map;
@@ -28,15 +12,14 @@ class Classificacoes extends Component {
     return (
       <div>
         <h2>Classificação</h2>
-        {this.state.selos
+        {this.props.data
           ? (
             <ul>
               {this
-                .state
-                .selos
+                .mapClassificacoes(this.props.data)
                 .map((currentSelo, i) => (
                   <li key={i}>
-                    <Classificacao selo={currentSelo}/>
+                    <Classificacao currentselo={currentSelo}/>
                   </li>
                 ))}
             </ul>

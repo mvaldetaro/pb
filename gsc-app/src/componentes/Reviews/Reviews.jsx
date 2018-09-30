@@ -3,7 +3,7 @@ import Review from "./Review";
 
 class Reviews extends Component {
 
-  constructor(props) {
+  /*constructor(props) {
     super(props);
 
     this.state = {
@@ -17,17 +17,17 @@ class Reviews extends Component {
     if (this.props.data !== prevProps.data) {
       this.setState({reviews: this.props.data})
     }
-  }
+  }*/
 
   render() {
     return (
       <div>
-        {this.state.reviews
+        {this.props.data
           ? (
             <ul>
               {this
-                .state
-                .reviews
+                .props
+                .data
                 .map((currentReview, i) => (
                   <li key={i}>
                     <Review review={currentReview}/>

@@ -1,8 +1,11 @@
 import React, {Component} from 'react';
-import axios from "axios";
-import WP from "../../core/WP";
+import {connect} from 'react-redux';
+import {bindActionCreators} from "redux";
+
+import {getGame} from "./GameDetailsActions";
 
 import {
+  Cover,
   Reviews,
   Screenshots,
   Videos,
@@ -14,25 +17,23 @@ import {
   Developers,
   Classificacoes,
   Pessoas,
-  Utils as Html
+  Utils as Html,
+  Title
 } from "../../componentes";
+import Resume from '../../componentes/Resume';
 
 class GameDetails extends Component {
 
-  constructor(props) {
+  /*constructor(props) {
     super(props);
 
     this.state = {
       slug: props.match.params.slug,
       currentGame: {}
     };
-  };
+  };*/
 
-  componentDidMount() {
-    this.getGame();
-  }
-
-  mapGame(game) {
+  /*mapGame(game) {
     return {
       id: game.id,
       slug: game.slug,
@@ -57,9 +58,9 @@ class GameDetails extends Component {
       classificacao: game.acf.classificacao_etaria,
       creditos: game.acf.creditos
     }
-  }
+  }*/
 
-  getGame = () => {
+  /*getGame = () => {
     axios
       .get(WP.url + WP.types.games, {
       params: {
@@ -72,6 +73,13 @@ class GameDetails extends Component {
           currentGame: this.mapGame(resp.data[0])
         })
       });
+  }*/
+
+  componentDidMount() {
+
+    this
+      .props
+      .getGame(this.props.match.params.slug);
   }
 
   render() {
@@ -94,25 +102,23 @@ class GameDetails extends Component {
       nomes_alternativos,
       classificacao,
       creditos
-    } = this.state.currentGame;
+    } = this.props.currentGame;
 
     return (
       <section className="game-details">
-
-        <img src={cover} alt={title}/>
-        <h1>{title}</h1>
-        <Html html={content}/>
+        <Cover src={cover} alt={title}/>
+        <Resume
+          tag="h1"
+          title={title}
+          content={content}
+          fonte={{
+          "url": wikipedia,
+          "title": "Wikipedia"
+        }}/>
         <Plataformas data={plataformas}/>
-        <a href={wikipedia} target="_blank" rel="external">Wikipedia</a>
-
-        <h2>Storyline</h2>
-        <Html html={storyline}/>
-        <p>
-          <b>Franquia:</b><br/> {franquia}</p>
-
-        <p>
-          <b>Nomes alternativos:</b><br/> {nomes_alternativos}</p>
-
+        <Resume tag="h1" title="Storyline" content={storyline}/>
+        <Resume title="Franquia:" content={franquia}/>
+        <Resume title="Nomes alternativos:" content={nomes_alternativos}/>
         <Reviews data={reviews}/>
         <Screenshots data={screenshots}/>
         <Videos data={videos}/>
@@ -128,4 +134,14 @@ class GameDetails extends Component {
   }
 }
 
-export default GameDetails;
+function mapStateToProps(state) {
+  return {route: state.gameSelected.route, currentGame: state.gameSelected.currentGame}
+}
+
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({
+    getGame
+  }, dispatch)
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(GameDetails);

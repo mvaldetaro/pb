@@ -2,7 +2,7 @@ import React, {Component, Fragment} from 'react';
 
 class Video extends Component {
 
-  constructor(props) {
+  /*constructor(props) {
     super(props);
 
     this.state = {
@@ -12,15 +12,14 @@ class Video extends Component {
   };
 
   componentDidMount() {
-    //console.log(this.props.video)
     this.setState({video: this.props.video})
-  }
+  }*/
 
   embedUrl() {
     const re = /^(https?:\/\/)?((www\.)?(youtube(-nocookie)?|youtube.googleapis)\.com.*(v\/|v=|vi=|vi\/|e\/|embed\/|user\/.*\/u\/\d+\/)|youtu\.be\/)([_0-9a-z-]+)/i;
-    let url = this.state.video.url_video;
+    let url = this.props.video.url_video;
 
-    if (this.state.video.url_video) {
+    if (this.props.video.url_video) {
       let id = url.match(re)[7];
       return 'https://www.youtube.com/embed/' + id;
     } else {
@@ -30,7 +29,7 @@ class Video extends Component {
 
   render() {
 
-    const {titulo_video} = this.state.video;
+    const {titulo_video} = this.props.video;
 
     return (
       <Fragment>

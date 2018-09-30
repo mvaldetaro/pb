@@ -3,7 +3,7 @@ import Podcast from "./Podcast";
 
 class Podcasts extends Component {
 
-  constructor(props) {
+  /*constructor(props) {
     super(props);
 
     this.state = {
@@ -16,18 +16,18 @@ class Podcasts extends Component {
     if (this.props.data !== prevProps.data) {
       this.setState({podcasts: this.props.data})
     }
-  }
+  }*/
 
   render() {
     return (
       <div>
         <h2>Podcasts</h2>
-        {this.state.podcasts
+        {this.props.data
           ? (
             <ul>
               {this
-                .state
-                .podcasts
+                .props
+                .data
                 .map((currentPodcast, i) => (
                   <li key={i}>
                     <Podcast podcast={currentPodcast}/>

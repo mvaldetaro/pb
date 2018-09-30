@@ -3,7 +3,7 @@ import {Link} from "react-router-dom";
 
 class Revista extends Component {
 
-  constructor(props) {
+  /*constructor(props) {
     super(props);
 
     this.state = {};
@@ -12,15 +12,15 @@ class Revista extends Component {
 
   componentDidMount() {
     this.setState(this.mapRevista(this.props.revista.revista))
-  }
+  }*/
 
-  mapRevista(revista) {
+  /*mapRevista(revista) {
     return {slug: revista.slug, type: revista.type, thumbnail: revista.better_featured_image.media_details.sizes.thumbnail.source_url, title: revista.title.rendered}
-  }
+  }*/
 
   render() {
 
-    const {thumbnail, slug, type, title} = this.state;
+    const {thumbnail, slug, type, title} = this.props.revista;
 
     return (
       <Link to={`/${type}/${slug}`}>

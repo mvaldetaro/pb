@@ -3,7 +3,7 @@ import Html from '../Utils/Html';
 
 class Review extends Component {
 
-  constructor(props) {
+  /*constructor(props) {
     super(props);
 
     this.state = {
@@ -14,25 +14,19 @@ class Review extends Component {
 
   componentDidMount() {
     this.setState({review: this.props.review})
-  }
+  }*/
 
   render() {
 
-    const {titulo_review, resumo_review, url_review} = this.state.review;
+    const {titulo_review, resumo_review, url_review} = this.props.review;
 
     return (
       <div>
         <h2>Reviews</h2>
-        {this.state.review
-          ? (
-            <Fragment>
-              <h3>
-                <a href={url_review} target="_blank" rel="external">{titulo_review}</a>
-              </h3>
-              <Html html={resumo_review}></Html>
-            </Fragment>
-          )
-          : "Deu ruim"}
+        <h3>
+          <a href={url_review} target="_blank" rel="external">{titulo_review}</a>
+        </h3>
+        <Html html={resumo_review}></Html>
       </div>
     )
   }
