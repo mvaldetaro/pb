@@ -3,7 +3,11 @@ import {Utils as Html, Title} from "../../componentes";
 
 const Resume = (props) => (
   <Fragment>
-    <Title type={props.tag}>{props.title}</Title>
+    <Title type={props.tag}>
+      {props.link
+        ? <a href={props.link} target="_blank" rel="external">{props.title}</a>
+        : props.title}
+    </Title>
     <Html html={props.content}/>
     <Fragment>
       {props.fonte
