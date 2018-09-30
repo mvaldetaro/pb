@@ -14,13 +14,12 @@ import {
   Lancamentos,
   Plataformas,
   Revistas,
+  Resume,
   Developers,
   Classificacoes,
-  Pessoas,
-  Utils as Html,
-  Title
+  Pessoas
 } from "../../componentes";
-import Resume from '../../componentes/Resume';
+//import Resume from '../../componentes/Resume';
 
 class GameDetails extends Component {
 
