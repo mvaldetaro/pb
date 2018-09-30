@@ -16,10 +16,13 @@ export {default as Podcasts}
 from './Podcasts';
 export {default as Publishers}
 from './Publishers';
-export {default as Reviews}
-from './Resume';
+
 export {default as Resume}
+from './Resume';
+
+export {default as Reviews}
 from './Reviews';
+
 export {default as Revistas}
 from './Revistas';
 export {default as Screenshots}
