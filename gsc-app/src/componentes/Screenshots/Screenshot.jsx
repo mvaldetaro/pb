@@ -1,29 +1,11 @@
 import React, {Component, Fragment} from 'react';
-
+import {Cover} from "../../componentes";
 class Screenshot extends Component {
-
-  /*constructor(props) {
-    super(props);
-
-    this.state = {
-      screenshot: {}
-    };
-
-  };
-
-  componentDidMount() {
-    this.setState({screenshot: this.props.screenshot})
-  }*/
-
   render() {
 
     const {alt, url} = this.props.screenshot;
 
-    return (
-      <Fragment>
-        <img src={url} alt={alt} width="200px"/>
-      </Fragment>
-    )
+    return (<Cover src={url} alt={alt} width="200px"/>)
   }
 }
 
