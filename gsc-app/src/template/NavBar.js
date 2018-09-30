@@ -7,8 +7,8 @@ const NavBar = () => {
       <Link to="/">Games Social Club</Link>
       <Link to="/browse">Games</Link>
       <Link to="/calendar">Calendário</Link>
-      <Link to="/blog">Blog</Link>
-      <Link to="/noticias">Notícias</Link>
+      {/*<Link to="/blog">Blog</Link>
+      <Link to="/noticias">Notícias</Link>*/}
     </div>
   );
 }

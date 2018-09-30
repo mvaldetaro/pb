@@ -2,19 +2,6 @@ import React, {Component, Fragment} from 'react';
 
 class Video extends Component {
 
-  /*constructor(props) {
-    super(props);
-
-    this.state = {
-      video: {}
-    };
-
-  };
-
-  componentDidMount() {
-    this.setState({video: this.props.video})
-  }*/
-
   embedUrl() {
     const re = /^(https?:\/\/)?((www\.)?(youtube(-nocookie)?|youtube.googleapis)\.com.*(v\/|v=|vi=|vi\/|e\/|embed\/|user\/.*\/u\/\d+\/)|youtu\.be\/)([_0-9a-z-]+)/i;
     let url = this.props.video.url_video;

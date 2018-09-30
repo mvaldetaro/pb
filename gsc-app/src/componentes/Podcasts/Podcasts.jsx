@@ -3,21 +3,6 @@ import Podcast from "./Podcast";
 
 class Podcasts extends Component {
 
-  /*constructor(props) {
-    super(props);
-
-    this.state = {
-      podcasts: []
-    };
-
-  };
-
-  componentDidUpdate(prevProps) {
-    if (this.props.data !== prevProps.data) {
-      this.setState({podcasts: this.props.data})
-    }
-  }*/
-
   render() {
     return (
       <div>

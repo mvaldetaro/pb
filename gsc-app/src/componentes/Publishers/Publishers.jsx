@@ -3,23 +3,6 @@ import Publisher from "./Publisher";
 
 class Publishers extends Component {
 
-  /*constructor(props) {
-    super(props);
-
-    this.state = {
-      publishers: []
-    };
-
-  };
-
-  componentDidUpdate(prevProps) {
-    if (this.props.data !== prevProps.data) {
-      this.setState({
-        publishers: this.mapPublishers(this.props.data)
-      })
-    }
-  }*/
-
   mapPublishers(arr) {
     let mapy = []
     if (arr) {

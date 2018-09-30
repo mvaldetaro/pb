@@ -19,60 +19,8 @@ import {
   Classificacoes,
   Pessoas
 } from "../../componentes";
-//import Resume from '../../componentes/Resume';
 
 class GameDetails extends Component {
-
-  /*constructor(props) {
-    super(props);
-
-    this.state = {
-      slug: props.match.params.slug,
-      currentGame: {}
-    };
-  };*/
-
-  /*mapGame(game) {
-    return {
-      id: game.id,
-      slug: game.slug,
-      thumbnail: game.better_featured_image.media_details.sizes.thumbnail.source_url,
-      title: game.title.rendered,
-      excerpt: game.excerpt.rendered,
-      content: game.content.rendered,
-      plataformas: game.acf.datas_plataforma,
-      cover: game.acf.cover,
-      lancamentos: game.acf.datas_plataforma,
-      desenvolvedoras: game.acf.desenvolvedores,
-      publicadoras: game.acf.publicadoras,
-      podcasts: game.acf.podcasts,
-      reviews: game.acf.reviews,
-      revistas: game.acf.revistas_relacionadas,
-      screenshots: game.acf.screenshots,
-      storyline: game.acf.storyline,
-      videos: game.acf.videos,
-      wikipedia: game.acf.wikipedia_page,
-      franquia: game.acf.franquia,
-      nomes_alternativos: game.acf.nomes_alternativos,
-      classificacao: game.acf.classificacao_etaria,
-      creditos: game.acf.creditos
-    }
-  }*/
-
-  /*getGame = () => {
-    axios
-      .get(WP.url + WP.types.games, {
-      params: {
-        slug: this.state.slug
-      }
-    })
-      .then(resp => {
-        console.log(resp.data[0]);
-        this.setState({
-          currentGame: this.mapGame(resp.data[0])
-        })
-      });
-  }*/
 
   componentDidMount() {
 

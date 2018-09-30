@@ -3,23 +3,6 @@ import Developer from "./Developer";
 
 class Developers extends Component {
 
-  /*constructor(props) {
-    super(props);
-
-    this.state = {
-      desenvolvedora: []
-    };
-
-  };
-
-  componentDidUpdate(prevProps) {
-    if (this.props.data !== prevProps.data) {
-      this.setState({
-        desenvolvedora: this.mapDevelopers(this.props.data)
-      })
-    }
-  }*/
-
   mapDevelopers(arr) {
     let mapy = []
     if (arr) {

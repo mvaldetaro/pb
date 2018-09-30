@@ -8,43 +8,6 @@ import {getGames} from "./GamesListActions";
 
 class GamesList extends Component {
 
-  /*constructor(props) {
-    super(props);
-
-    this.state = {
-      games: [],
-      searchString: ''
-    };
-  };*/
-
-  /*mapGame(game) {
-    return {
-      id: game.id,
-      slug: game.slug,
-      thumbnail: game.better_featured_image.media_details.sizes.thumbnail.source_url,
-      title: game.title.rendered,
-      excerpt: game.excerpt.rendered,
-      plataforma: game.acf.datas_plataforma[0].plataforma.post_title
-    }
-  }*/
-
-  /*getGames = () => {
-    axios
-      .get(WP.url + WP.types.games, {
-      params: {
-        search: this.state.searchString
-      }
-    })
-      .then(resp => {
-        console.log(resp.data);
-        this.setState({
-          games: resp
-            .data
-            .map(this.mapGame)
-        })
-      });
-  }*/
-
   componentWillMount() {
     this
       .props

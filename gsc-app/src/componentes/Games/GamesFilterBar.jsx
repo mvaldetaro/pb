@@ -8,22 +8,6 @@ import {onSearch} from "./GamesFilterBarActions";
 
 class GamesFilterBar extends Component {
 
-  /*constructor(props) {
-    super(props);
-
-    this.state = {
-      searchString: ''
-    };
-  };
-
-  onSearchInputChange = (event) => {
-    if (event.target.value) {
-      this.setState({searchString: event.target.value})
-    } else {
-      this.setState({searchString: ''})
-    }
-  }*/
-
   render() {
     return (<TextField
       id="searchInput"

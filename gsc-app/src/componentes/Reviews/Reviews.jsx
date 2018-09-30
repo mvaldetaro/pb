@@ -4,22 +4,6 @@ import {Title} from "../";
 
 class Reviews extends Component {
 
-  /*constructor(props) {
-    super(props);
-
-    this.state = {
-      slug: 'teste',
-      reviews: []
-    };
-
-  };
-
-  componentDidUpdate(prevProps) {
-    if (this.props.data !== prevProps.data) {
-      this.setState({reviews: this.props.data})
-    }
-  }*/
-
   render() {
     return (
       <div>

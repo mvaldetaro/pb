@@ -3,20 +3,6 @@ import Screenshot from "./Screenshot";
 
 class Screenshots extends Component {
 
-  /*constructor(props) {
-    super(props);
-
-    this.state = {
-      screenshots: []
-    };
-  };
-
-  componentDidUpdate(prevProps) {
-    if (this.props.data !== prevProps.data) {
-      this.setState({screenshots: this.props.data})
-    }
-  }*/
-
   render() {
     return (
       <div>

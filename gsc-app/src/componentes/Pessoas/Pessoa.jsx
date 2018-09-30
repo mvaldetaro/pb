@@ -1,18 +1,10 @@
-import React, {Component, Fragment} from 'react';
-import {Link} from "react-router-dom";
+import React, {Component} from 'react';
+import {Resume} from "../";
 
 class Pessoa extends Component {
-
   render() {
-
     const {slug, title, type, funcao} = this.props.pessoa;
-
-    return (
-      <Fragment>
-        <Link to={`/${type}/${slug}`}>{title}</Link><br/>
-        <span>{funcao}</span>
-      </Fragment>
-    )
+    return (<Resume tag="p" title={title} content={funcao} to={`/${type}/${slug}`}/>)
   }
 }
 

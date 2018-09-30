@@ -7,13 +7,11 @@ import {
   Browse,
   Blog,
   News,
-  Game
+  Game,
+  Empresa,
+  Pessoa,
+  Plataforma
 } from "../";
-
-// import Home from "./Home"; import BrowseGames from '../BrowseGames'; import
-// Page404 from '../404/Page404'; import Calendar from './Calendar'; import Blog
-// from './Blog'; import News from '../News/News'; import GameDetails from
-// './GamesDetails';
 
 class Main extends Component {
   render() {
@@ -25,6 +23,9 @@ class Main extends Component {
         <Route path='/blog' component={Blog}/>
         <Route path='/noticias' component={News}/>
         <Route path='/game/:slug' component={Game}/>
+        <Route path='/empresas/:slug' component={Empresa}/>
+        <Route path='/plataformas/:slug' component={Plataforma}/>
+        <Route path='/pessoas/:slug' component={Pessoa}/>
         <Route path='*' component={Page404}/>
       </Switch>
     );

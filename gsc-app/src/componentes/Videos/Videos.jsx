@@ -3,21 +3,6 @@ import Video from "./Video";
 
 class Videos extends Component {
 
-  /*constructor(props) {
-    super(props);
-
-    this.state = {
-      videos: []
-    };
-
-  };
-
-  componentDidUpdate(prevProps) {
-    if (this.props.data !== prevProps.data) {
-      this.setState({videos: this.props.data})
-    }
-  }*/
-
   render() {
     return (
       <div>
