@@ -1,7 +1,16 @@
 import React from 'react';
 
-const Cover = (props) => (props.src
-  ? <img src={props.src} alt={props.alt}/>
-  : false);
+const Cover = (props) => {
+
+  const {
+    src,
+    alt,
+    ...attrs
+  } = props
+
+  return (src
+    ? <img src={src} alt={alt} {...attrs}/>
+    : false)
+};
 
 export default Cover;
