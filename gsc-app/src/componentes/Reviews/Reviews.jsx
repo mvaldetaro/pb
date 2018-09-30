@@ -1,5 +1,6 @@
-import React, {Component} from 'react';
+import React, {Component, Fragment} from 'react';
 import Review from "./Review";
+import {Title} from "../";
 
 class Reviews extends Component {
 
@@ -24,16 +25,19 @@ class Reviews extends Component {
       <div>
         {this.props.data
           ? (
-            <ul>
-              {this
-                .props
-                .data
-                .map((currentReview, i) => (
-                  <li key={i}>
-                    <Review review={currentReview}/>
-                  </li>
-                ))}
-            </ul>
+            <Fragment>
+              <Title type="h2">Reviews</Title>
+              <ul>
+                {this
+                  .props
+                  .data
+                  .map((currentReview, i) => (
+                    <li key={i}>
+                      <Review review={currentReview}/>
+                    </li>
+                  ))}
+              </ul>
+            </Fragment>
           )
           : "Nenhum review encontrado"}
       </div>
