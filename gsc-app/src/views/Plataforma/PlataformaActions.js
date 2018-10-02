@@ -12,7 +12,7 @@ function mapPlataforma(obj) {
     dt_lancamento: obj.acf.datas_de_lancamento,
     fabricante: obj.acf.fabricante,
     desenvolvedores: obj.acf.desenvolvedores,
-    geracao: obj.acf.geracao,
+    geracao: obj.acf.geracao.name,
     nome_alternativo: obj.acf.nome_alternativo,
     tipo_plataforma: obj.acf.tipo_plataforma,
     familia_produto: obj.acf.familia_produto,

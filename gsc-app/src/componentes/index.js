@@ -8,6 +8,10 @@ export {default as Games}
 from './Games';
 export {default as Lancamentos}
 from './Lancamentos';
+
+export {default as List}
+from './List';
+
 export {default as Pessoas}
 from './Pessoas';
 export {default as Plataformas}

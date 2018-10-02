@@ -15,7 +15,7 @@ const Resume = (props) => {
             ? <Link to={props.to}>{props.title}</Link>
             : props.title}
       </Title>
-      <Html html={props.content}/>
+      <Html html={props.content}/> {props.children}
       <Fragment>
         {props.fonte
           ? <p>
