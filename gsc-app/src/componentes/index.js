@@ -31,6 +31,13 @@ export {default as Revistas}
 from './Revistas';
 export {default as Screenshots}
 from './Screenshots';
+
+export {default as Tab}
+from './Tab';
+
+export {default as Tabs}
+from './Tabs';
+
 export {default as Title}
 from './Title';
 export {default as Utils}

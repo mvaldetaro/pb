@@ -4,7 +4,7 @@ import {bindActionCreators} from "redux";
 
 import {getPlataforma} from "./PlataformaActions";
 
-import {Cover, Resume, List} from "../../componentes";
+import {Cover, Resume, List, Tabs} from "../../componentes";
 
 class Plataforma extends Component {
 
@@ -57,25 +57,29 @@ class Plataforma extends Component {
         <hr/>
         <h2>Informações</h2>
 
-        <Resume tag="p" title="Geração" content={geracao}></Resume>
-        <Resume tag="p" title="Tipo de plataforma" content={tipo_plataforma}></Resume>
-        <Resume tag="p" title="Família do produto" content={familia_produto}></Resume>
-        <Resume tag="p" title="Preço de lançamento" content=""></Resume>
-        <List itens={preco_de_lancamento}></List>
-        <Resume tag="p" title="Nome alternativo" content={nome_alternativo}></Resume>
+        <Tabs>
+          <div label="Informações">
+            <Resume tag="p" title="Geração" content={geracao}></Resume>
+            <Resume tag="p" title="Tipo de plataforma" content={tipo_plataforma}></Resume>
+            <Resume tag="p" title="Família do produto" content={familia_produto}></Resume>
+            <Resume tag="p" title="Preço de lançamento" content=""></Resume>
+            <List itens={preco_de_lancamento}></List>
+            <Resume tag="p" title="Nome alternativo" content={nome_alternativo}></Resume>
+          </div>
+          <div label="Hardware">
+            <Resume tag="p" title="Sistema Operacional" content={so}></Resume>
+            <Resume tag="p" title="CPU" content={cpu}></Resume>
+            <Resume tag="p" title="Memória" content={memoria}></Resume>
+            <Resume tag="p" title="Armazenamento" content={armazenamento}></Resume>
+            <Resume tag="p" title="Vídeo" content={video}></Resume>
+            <Resume tag="p" title="Som" content={som}></Resume>
+            <Resume tag="p" title="Serviço Online" content={servico_online}></Resume>
+            <Resume tag="p" title="Saídas" content={saidas}></Resume>
+            <Resume tag="p" title="Resoluções" content={resolucoes}></Resume>
+            <Resume tag="p" title="Conectividade" content={conectividade}></Resume>
+          </div>
+        </Tabs>
 
-        <h2>Hardware</h2>
-
-        <Resume tag="p" title="Sistema Operacional" content={so}></Resume>
-        <Resume tag="p" title="CPU" content={cpu}></Resume>
-        <Resume tag="p" title="Memória" content={memoria}></Resume>
-        <Resume tag="p" title="Armazenamento" content={armazenamento}></Resume>
-        <Resume tag="p" title="Vídeo" content={video}></Resume>
-        <Resume tag="p" title="Som" content={som}></Resume>
-        <Resume tag="p" title="Serviço Online" content={servico_online}></Resume>
-        <Resume tag="p" title="Saídas" content={saidas}></Resume>
-        <Resume tag="p" title="Resoluções" content={resolucoes}></Resume>
-        <Resume tag="p" title="Conectividade" content={conectividade}></Resume>
       </div>
     );
   }
