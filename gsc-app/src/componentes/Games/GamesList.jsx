@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {Grid} from "@material-ui/core";
+import {withStyles} from '@material-ui/core/styles';
 import Game from './Game';
 import {connect} from 'react-redux';
 import {bindActionCreators} from "redux";
@@ -29,7 +30,7 @@ class GamesList extends Component {
       <div className="game-list">
         {this.props.games
           ? (
-            <Grid container spacing={24}>
+            <Grid container spacing={16}>
               {this
                 .props
                 .games

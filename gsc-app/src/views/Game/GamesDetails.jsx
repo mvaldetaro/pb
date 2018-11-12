@@ -4,6 +4,8 @@ import {bindActionCreators} from "redux";
 
 import {getGame} from "./GameDetailsActions";
 
+import {Typography} from "@material-ui/core";
+
 import {
   Cover,
   Reviews,
@@ -35,6 +37,7 @@ class GameDetails extends Component {
       content,
       plataformas,
       cover,
+      thumbnail,
       lancamentos,
       desenvolvedoras,
       publicadoras,
@@ -48,12 +51,15 @@ class GameDetails extends Component {
       franquia,
       nomes_alternativos,
       classificacao,
-      creditos
+      creditos,
+      ano_lancamento,
+      categories
     } = this.props.currentGame;
 
     return (
       <section className="game-details">
-        <Cover src={cover} alt={title}/>
+        <Cover src={thumbnail} alt={title}/>
+        <Typography>{ano_lancamento}</Typography>
         <Resume
           tag="h1"
           title={title}

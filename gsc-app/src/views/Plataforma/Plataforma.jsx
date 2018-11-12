@@ -55,7 +55,6 @@ class Plataforma extends Component {
         <Resume tag="p" title="Desenvolvedora" content={desenvolvedores}></Resume>
         <Resume tag="p" title="Unidades vendidas" content={qtd_unidades_vendidas}></Resume>
         <hr/>
-        <h2>Informações</h2>
 
         <Tabs>
           <div label="Informações">

@@ -3,7 +3,7 @@ export default {
   url : 'http://54.232.226.251/service/wp-json/wp/v2/',
 
   types : {
-    posts: 'post',
+    posts: 'posts',
     pages: 'page',
     attachment: 'attachment',
     manuais: 'manuais',

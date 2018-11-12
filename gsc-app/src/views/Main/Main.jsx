@@ -16,18 +16,20 @@ import {
 class Main extends Component {
   render() {
     return (
-      <Switch>
-        <Route exact path='/' component={Home}/>
-        <Route path='/browse' component={Browse}/>
-        <Route path='/calendar' component={Calendar}/>
-        <Route path='/blog' component={Blog}/>
-        <Route path='/noticias' component={News}/>
-        <Route path='/game/:slug' component={Game}/>
-        <Route path='/empresas/:slug' component={Empresa}/>
-        <Route path='/plataformas/:slug' component={Plataforma}/>
-        <Route path='/pessoas/:slug' component={Pessoa}/>
-        <Route path='*' component={Page404}/>
-      </Switch>
+      <div className="container">
+        <Switch>
+          <Route exact path='/' component={Home}/>
+          <Route path='/browse' component={Browse}/>
+          <Route path='/calendar' component={Calendar}/>
+          <Route path='/blog' component={Blog}/>
+          <Route path='/noticias' component={News}/>
+          <Route path='/game/:slug' component={Game}/>
+          <Route path='/empresas/:slug' component={Empresa}/>
+          <Route path='/plataformas/:slug' component={Plataforma}/>
+          <Route path='/pessoas/:slug' component={Pessoa}/>
+          <Route path='*' component={Page404}/>
+        </Switch>
+      </div>
     );
   }
 }

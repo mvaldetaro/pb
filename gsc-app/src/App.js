@@ -5,6 +5,7 @@ import AppReducer from './AppReducer'
 import thunk from 'redux-thunk'
 
 import Header from "./template/Header";
+import Footer from "./template/Footer";
 import Main from './views/Main';
 import './App.css';
 
@@ -19,6 +20,7 @@ class App extends Component {
         <div className="app">
           <Header/>
           <Main/>
+          <Footer/>
         </div>
       </Provider>
     );

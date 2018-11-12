@@ -24,7 +24,9 @@ function mapGame(game) {
     franquia: game.acf.franquia,
     nomes_alternativos: game.acf.nomes_alternativos,
     classificacao: game.acf.classificacao_etaria,
-    creditos: game.acf.creditos
+    creditos: game.acf.creditos,
+    ano_lancamento: game.acf.ano_de_lancamento,
+    categories: game.categories
   }
 }
 

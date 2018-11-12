@@ -1,13 +1,38 @@
 const INITIAL_STATE = {
-  hasIntro: false
+  hasIntro: false,
+  recentPodcasts: [],
+  recentChannels: [],
+  recentTrailers: [],
+  recentNews: [],
+  recentHero: []
 };
 
-export default(state = INITIAL_STATE, action) => {
+export default function (state = INITIAL_STATE, action) {
   switch (action.type) {
-    case 'START_CHANGED':
+    case 'RECENT_PODCASTS':
       return {
         ...state,
-        hasIntro: false
+        recentPodcasts: action.payload
+      }
+    case 'RECENT_CHANNELS':
+      return {
+        ...state,
+        recentChannels: action.payload
+      }
+    case 'RECENT_TRAILERS':
+      return {
+        ...state,
+        recentTrailers: action.payload
+      }
+    case 'RECENT_NEWS':
+      return {
+        ...state,
+        recentNews: action.payload
+      }
+    case 'RECENT_HERO':
+      return {
+        ...state,
+        recentHero: action.payload
       }
     default:
       return state
