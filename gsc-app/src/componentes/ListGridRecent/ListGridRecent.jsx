@@ -20,9 +20,9 @@ class ListGridRecent extends Component {
               {this
                 .props
                 .data
-                .map((currentPodcast, i) => (
+                .map((currentData, i) => (
                   <Grid key={i} item xs={12} sm={3}>
-                    <ListGridItem podcast={currentPodcast}/>
+                    <ListGridItem category={this.props.category} data={currentData}/>
                   </Grid>
                 ))}
             </Grid>

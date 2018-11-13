@@ -106,18 +106,6 @@ class Home extends Component {
 }
             </section>
           </Grid>
-          {/*<section className="comunidade">
-
-              <section className="podcasts">
-                <ListGridRecent title={'Podcasts'} data={recentPodcasts}></ListGridRecent>
-              </section>
-
-              <section className="videos">
-                <ListGridRecent title={'Canais'} data={recentChannels}></ListGridRecent>
-              </section>
-
-
-            </section>*/}
 
           <Grid item xs={12} sm={4}>
             <section className="channels">
@@ -163,9 +151,22 @@ class Home extends Component {
             </section>
           </Grid>
         </Grid>
-        <section className="trailers">
-          <ListGridRecent title={'Trailers'} data={recentTrailers}></ListGridRecent>
-        </section>
+
+        <Grid
+          container
+          direction="row"
+          justify="flex-start"
+          alignItems="flex-start"
+          id="content"
+          spacing={24}>
+
+          <Grid item xs={12}>
+            <section className="trailers">
+              <ListGridRecent title={'Trailers'} category={'trailers'} data={recentTrailers}></ListGridRecent>
+            </section>
+          </Grid>
+
+        </Grid>
       </Grid>
 
     );

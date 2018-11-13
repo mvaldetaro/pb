@@ -25,10 +25,10 @@ const currencies = [
 class GamesFilterBar extends Component {
 
   state = {
-    name: 'Cat in the Hat',
-    age: '',
-    multiline: 'Controlled',
-    currency: 'EUR'
+    searchString: '',
+    plataformas: '',
+    years: '',
+    genero: ''
   };
 
   handleChange = name => event => {
@@ -36,6 +36,8 @@ class GamesFilterBar extends Component {
   };
 
   render() {
+
+    const {searchString, plataformas, years, genero} = this.props;
 
     return (
       <div className="root">
@@ -53,14 +55,31 @@ class GamesFilterBar extends Component {
               id="standard-select-currency"
               select
               placeholder="Select"
-              value={this.state.currency}
-              onChange={this.handleChange('currency')}
+              value={this.state.plataformas}
+              onChange={this.handleChange('plataformas')}
               helperText=""
               margin="normal"
               fullWidth={true}>
-              {currencies.map(option => (
-                <MenuItem key={option.value} value={option.value}>
-                  {option.label}
+              {plataformas.map(option => (
+                <MenuItem key={option.id} value={option.id}>
+                  {option.name}
+                </MenuItem>
+              ))}
+            </TextField>
+          </Grid>
+          <Grid item xs={12} sm={6} md={3}>
+            <TextField
+              id="standard-select-currency"
+              select
+              placeholder="Select"
+              value={this.state.genero}
+              onChange={this.handleChange('genero')}
+              helperText=""
+              margin="normal"
+              fullWidth={true}>
+              {genero.map(option => (
+                <MenuItem key={option.id} value={option.id}>
+                  {option.name}
                 </MenuItem>
               ))}
             </TextField>
@@ -75,26 +94,9 @@ class GamesFilterBar extends Component {
               helperText=""
               margin="normal"
               fullWidth={true}>
-              {currencies.map(option => (
-                <MenuItem key={option.value} value={option.value}>
-                  {option.label}
-                </MenuItem>
-              ))}
-            </TextField>
-          </Grid>
-          <Grid item xs={12} sm={6} md={3}>
-            <TextField
-              id="standard-select-currency"
-              select
-              placeholder="Select"
-              value={this.state.currency}
-              onChange={this.handleChange('currency')}
-              helperText=""
-              margin="normal"
-              fullWidth={true}>
-              {currencies.map(option => (
-                <MenuItem key={option.value} value={option.value}>
-                  {option.label}
+              {years.map(option => (
+                <MenuItem key={option.id} value={option.id}>
+                  {option.name}
                 </MenuItem>
               ))}
             </TextField>
@@ -108,7 +110,7 @@ class GamesFilterBar extends Component {
 }
 
 function mapStateToProps(state) {
-  return {searchString: state.search.searchString}
+  return {searchString: state.search.searchString, plataformas: state.games.plataformas, years: state.games.years, genero: state.games.genero}
 }
 
 function mapDispatchToProps(dispatch) {

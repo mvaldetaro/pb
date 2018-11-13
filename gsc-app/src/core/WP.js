@@ -4,6 +4,7 @@ export default {
 
   types : {
     posts: 'posts',
+    categories: 'categories',
     pages: 'page',
     attachment: 'attachment',
     manuais: 'manuais',

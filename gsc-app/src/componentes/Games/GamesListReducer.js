@@ -1,5 +1,24 @@
 const INITIAL_STATE = {
-  games: []
+  games: [],
+  plataformas: [],
+  years: years(),
+  genero: []
+}
+
+console.log(years())
+
+function years() {
+
+  var d = new Date();
+
+  let years = [];
+  let firstYear = 1970;
+  let lastYear = Number(d.getFullYear());
+
+  for (let index = firstYear; index <= lastYear; index++) {
+    years.push({id: index, name: index});
+  }
+  return years;
 }
 
 export default function (state = INITIAL_STATE, action) {
@@ -8,6 +27,16 @@ export default function (state = INITIAL_STATE, action) {
       return {
         ...state,
         games: action.payload
+      }
+    case "GET_CATEGORIES":
+      return {
+        ...state,
+        plataformas: action.payload
+      }
+    case "GET_GENERO":
+      return {
+        ...state,
+        genero: action.payload
       }
     default:
       return state

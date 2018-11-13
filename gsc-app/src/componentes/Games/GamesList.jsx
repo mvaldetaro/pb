@@ -5,7 +5,7 @@ import Game from './Game';
 import {connect} from 'react-redux';
 import {bindActionCreators} from "redux";
 
-import {getGames} from "./GamesListActions";
+import {getGames, getCategories} from "./GamesListActions";
 
 class GamesList extends Component {
 
@@ -13,6 +13,13 @@ class GamesList extends Component {
     this
       .props
       .getGames(this.props.searchString);
+    this
+      .props
+      .getCategories(2, 'GET_CATEGORIES');
+
+    this
+      .props
+      .getCategories(7, 'GET_GENERO');
   }
 
   //componentDidUpdate(prevProps, prevState, snapshot) {
@@ -53,7 +60,8 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return bindActionCreators({
-    getGames
+    getGames,
+    getCategories
   }, dispatch)
 }
 
