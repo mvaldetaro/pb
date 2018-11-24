@@ -1,43 +1,59 @@
 import React, {Component} from 'react';
-import {TextField, Grid, MenuItem, Divider} from "@material-ui/core";
+import {
+  TextField,
+  FormControl,
+  InputLabel,
+  Select,
+  Grid,
+  MenuItem,
+  Divider
+} from "@material-ui/core";
 
 import {connect} from 'react-redux';
 import {bindActionCreators} from "redux";
 
 import {onSearch} from "./GamesFilterBarActions";
 
-const currencies = [
-  {
-    value: 'USD',
-    label: '$'
-  }, {
-    value: 'EUR',
-    label: '€'
-  }, {
-    value: 'BTC',
-    label: '฿'
-  }, {
-    value: 'JPY',
-    label: '¥'
-  }
-];
-
 class GamesFilterBar extends Component {
 
-  state = {
-    searchString: '',
-    plataformas: '',
-    years: '',
-    genero: ''
+  constructor(props) {
+    super(props);
+    this.state = {
+      search: '',
+      plataforma: false,
+      release: false,
+      genero: false
+    };
+  }
+
+  removeEmptyKey = (obj) => {
+
+    let cloneObj = JSON.parse(JSON.stringify(obj));
+
+    Object
+      .keys(cloneObj)
+      .forEach((k) => (!cloneObj[k] && cloneObj[k] !== undefined) && delete cloneObj[k]);
+
+    return cloneObj;
   };
 
   handleChange = name => event => {
-    this.setState({[name]: event.target.value});
+    this.setState({
+      [name]: event.target.value
+    }, () => {
+      this
+        .props
+        .onSearch(this.removeEmptyKey(this.state))
+    });
+  };
+
+  handleChangePlataforma = () => event => {
+    this.setState({plataforma: event.target.value})
   };
 
   render() {
 
-    const {searchString, plataformas, years, genero} = this.props;
+    const {plataformas, releases, generos} = this.props;
 
     return (
       <div className="root">
@@ -45,21 +61,24 @@ class GamesFilterBar extends Component {
           <Grid item xs={12} sm={6} md={3}>
             <TextField
               id="searchInput"
-              placeholder="Buscar por Games"
+              placeholder="Buscar por nome"
+              value={this.state.search}
               margin="normal"
-              onChange={this.props.onSearch}
+              onChange={this.handleChange('search')}
               fullWidth={true}/>
           </Grid>
           <Grid item xs={12} sm={6} md={3}>
             <TextField
-              id="standard-select-currency"
+              id="plataformas"
               select
-              placeholder="Select"
-              value={this.state.plataformas}
-              onChange={this.handleChange('plataformas')}
-              helperText=""
+              value={this.state.plataforma}
+              onChange={this.handleChange('plataforma')}
+              fullWidth={true}
               margin="normal"
-              fullWidth={true}>
+              SelectProps={{
+              displayEmpty: true
+            }}>
+              <MenuItem key={'all'} value={false}>{'Todas as plataformas'}</MenuItem>
               {plataformas.map(option => (
                 <MenuItem key={option.id} value={option.id}>
                   {option.name}
@@ -69,15 +88,17 @@ class GamesFilterBar extends Component {
           </Grid>
           <Grid item xs={12} sm={6} md={3}>
             <TextField
-              id="standard-select-currency"
+              id="genero"
               select
-              placeholder="Select"
               value={this.state.genero}
               onChange={this.handleChange('genero')}
-              helperText=""
+              fullWidth={true}
               margin="normal"
-              fullWidth={true}>
-              {genero.map(option => (
+              SelectProps={{
+              displayEmpty: true
+            }}>
+              <MenuItem key={'all'} value={false}>{'Gênero'}</MenuItem>
+              {generos.map(option => (
                 <MenuItem key={option.id} value={option.id}>
                   {option.name}
                 </MenuItem>
@@ -86,15 +107,18 @@ class GamesFilterBar extends Component {
           </Grid>
           <Grid item xs={12} sm={6} md={3}>
             <TextField
-              id="standard-select-currency"
+              id="ano"
               select
-              placeholder="Select"
-              value={this.state.currency}
-              onChange={this.handleChange('currency')}
-              helperText=""
+              value={this.state.release}
+              onChange={this.handleChange('release')}
+              fullWidth={true}
               margin="normal"
-              fullWidth={true}>
-              {years.map(option => (
+              SelectProps={{
+              displayEmpty: true
+            }}>
+
+              <MenuItem key={'all'} value={false}>{'Ano de lançamento'}</MenuItem>
+              {releases.map(option => (
                 <MenuItem key={option.id} value={option.id}>
                   {option.name}
                 </MenuItem>
@@ -110,7 +134,7 @@ class GamesFilterBar extends Component {
 }
 
 function mapStateToProps(state) {
-  return {searchString: state.search.searchString, plataformas: state.games.plataformas, years: state.games.years, genero: state.games.genero}
+  return {plataformas: state.taxonomies.plataformas, releases: state.taxonomies.releases, generos: state.taxonomies.generos}
 }
 
 function mapDispatchToProps(dispatch) {

@@ -5,8 +5,6 @@ const INITIAL_STATE = {
   genero: []
 }
 
-console.log(years())
-
 function years() {
 
   var d = new Date();

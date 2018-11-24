@@ -1,5 +1,8 @@
 import React, {Component} from 'react';
-import {Switch, Route} from "react-router-dom";
+import {Switch, Route, withRouter} from "react-router-dom";
+import {connect} from 'react-redux';
+import {bindActionCreators} from "redux";
+import {retrieveTaxonomies} from "../../core/Taxonomies/TaxonomiesActions";
 import {
   Home,
   Page404,
@@ -13,7 +16,29 @@ import {
   Plataforma
 } from "../";
 
+import Header from "../../template/Header";
+
 class Main extends Component {
+
+  componentWillMount() {
+    console.log('app');
+    this
+      .props
+      .retrieveTaxonomies('plataforma', 'SET_PLATAFORMAS');
+    this
+      .props
+      .retrieveTaxonomies('categories', 'SET_CATEGORIES');
+    this
+      .props
+      .retrieveTaxonomies('tags', 'SET_TAGS');
+    this
+      .props
+      .retrieveTaxonomies('genero', 'SET_GENEROS');
+    this
+      .props
+      .retrieveTaxonomies('release', 'SET_RELEASES');
+  }
+
   render() {
     return (
       <div className="container">
@@ -34,4 +59,11 @@ class Main extends Component {
   }
 }
 
-export default Main;
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({
+    retrieveTaxonomies
+  }, dispatch)
+}
+
+export default withRouter(connect(null, mapDispatchToProps)(Main));
+//export default Main;

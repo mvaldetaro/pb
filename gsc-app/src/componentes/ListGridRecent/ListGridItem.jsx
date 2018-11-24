@@ -7,8 +7,6 @@ class ListGridItem extends Component {
 
     const {title, thumbnail, slug} = this.props.data;
 
-    console.log(this.props.data);
-
     return (
       <Paper>
         <a href={`/${this.props.category}/${slug}`}>

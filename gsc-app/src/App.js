@@ -14,6 +14,7 @@ const devTools = window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_
 const store = applyMiddleware(thunk)(createStore)(AppReducer, devTools);
 
 class App extends Component {
+
   render() {
     return (
       <Provider store={store}>

@@ -4,7 +4,8 @@ const INITIAL_STATE = {
   recentChannels: [],
   recentTrailers: [],
   recentNews: [],
-  recentHero: []
+  recentHero: [],
+  currentHeroPlataformas: []
 };
 
 export default function (state = INITIAL_STATE, action) {

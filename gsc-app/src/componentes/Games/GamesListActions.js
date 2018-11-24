@@ -36,12 +36,10 @@ function mapCategory(data) {
 }*/
 
 export function getGames(obj) {
+
   return function (dispatch) {
-    const request = axios.get(WP.url + WP.types.games, {
-      params: {
-        search: obj
-      }
-    })
+
+    const request = axios.get(WP.url + WP.types.games, {params: obj})
 
     request.then(resp => {
       dispatch({
@@ -55,8 +53,6 @@ export function getGames(obj) {
 }
 
 export function getCategories(parent, type) {
-
-  console.log(parent)
   return function (dispatch) {
     const request = axios.get(WP.url + WP.types.categories, {
       params: {

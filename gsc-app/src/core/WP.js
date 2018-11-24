@@ -5,6 +5,10 @@ export default {
   types : {
     posts: 'posts',
     categories: 'categories',
+    plataforma: 'plataforma',
+    genero: 'genero',
+    release: 'release',
+    tags: 'tags',
     pages: 'page',
     attachment: 'attachment',
     manuais: 'manuais',

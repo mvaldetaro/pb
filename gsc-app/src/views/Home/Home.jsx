@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {Link} from 'react-router-dom'
 import {
   Button,
   Grid,
@@ -10,16 +11,21 @@ import {
   Typography
 } from "@material-ui/core";
 
+import {Utils as Html} from "../../componentes";
+
 import {connect} from 'react-redux';
 import {bindActionCreators} from "redux";
 
 import {ListGridRecent} from "../../componentes";
 
-import {getRecentsPostsByCategoryId} from "./HomeActions";
+import {getRecentsPostsByCategoryId, getGames} from "./HomeActions";
 
 class Home extends Component {
 
   componentWillMount() {
+    this
+      .props
+      .getGames();
     this
       .props
       .getRecentsPostsByCategoryId(48, 'RECENT_NEWS');
@@ -34,9 +40,37 @@ class Home extends Component {
       .getRecentsPostsByCategoryId(51, 'RECENT_TRAILERS');
   }
 
+  componentDidMount() {
+    //console.log(this.props.recentHero[0]) console.log(this.props);
+
+  }
+
+  componentDidUpdate() {}
+
+  getCategoryName(id, arr) {
+
+    let name = [];
+    arr.map((item, i) => {
+
+      if (item.id === id) {
+        name.push(item.name)
+      }
+    })
+    console.log(name)
+    return name.join();
+  }
+
   render() {
 
-    const {recentPodcasts, recentChannels, recentTrailers, recentNews, recentHero} = this.props;
+    const {
+      recentPodcasts,
+      recentChannels,
+      recentTrailers,
+      recentNews,
+      recentHero,
+      plataformas
+    } = this.props;
+
     return (
       <Grid
         container
@@ -46,13 +80,35 @@ class Home extends Component {
         id="home">
         <Grid item xs={12}>
           <section className="hero">
-            <div className="plataformas">1 2 3</div>
-            <h1 className="title">Hero</h1>
-            <p className="desc">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Architecto, mollitia.</p>
-            <p>PRODUTORA-NAME |10/11/2018</p>
+            {recentHero
+              ? (
+                <div>
+                  {recentHero.map((current, i) => (
+                    <div key={i}>
+                      <div className="plataformas">
+                        {current
+                          .plataforma
+                          .map((item, i) => (
+                            <span key={i}>{this.getCategoryName(item, plataformas)}</span>
+                          ))}
+                      </div>
+                      <h1 className="title">{current.title}</h1>
+                      <Html className="desc" html={current.excerpt}/>
+                      <p>{current.desenvolvedora}
+                        | {current.lancamento}</p>
 
-            <Button variant={'outlined'} color={'primary'} size={'large'}>Visitar</Button>
-            {/*<Button>Comprar</Button>*/}
+                      <Button
+                        variant={'outlined'}
+                        color={'primary'}
+                        size={'large'}
+                        component={Link}
+                        to={`/game/${current.slug}`}>Visitar</Button>
+                      {/*<Button>Comprar</Button>*/}
+                    </div>
+                  ))}
+                </div>
+              )
+              : <p>No Hero</p>}
           </section>
         </Grid>
 
@@ -174,12 +230,22 @@ class Home extends Component {
 }
 
 function mapStateToProps(state) {
-  return {recentPodcasts: state.home.recentPodcasts, recentChannels: state.home.recentChannels, recentTrailers: state.home.recentTrailers, recentNews: state.home.recentNews, recentHero: state.home.recentHero}
+  return {
+    recentPodcasts: state.home.recentPodcasts,
+    recentChannels: state.home.recentChannels,
+    recentTrailers: state.home.recentTrailers,
+    recentNews: state.home.recentNews,
+    recentHero: state.home.recentHero,
+    plataformas: state.taxonomies.plataformas,
+    generos: state.taxonomies.generos,
+    release: state.taxonomies.release
+  }
 }
 
 function mapDispatchToProps(dispatch) {
   return bindActionCreators({
-    getRecentsPostsByCategoryId
+    getRecentsPostsByCategoryId, getGames,
+    //getCategoryName
   }, dispatch)
 }
 

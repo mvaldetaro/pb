@@ -15,6 +15,74 @@ function mapRecent(data) {
   }
 }
 
+export function getCategoryName(id, arr) {
+  let name = '';
+  arr.map((item, i) => {
+    item.id === id
+      ? item.name
+      : false
+  })
+
+  return name
+}
+
+function mapGame(game) {
+  return {
+    id: game.id,
+    slug: game.slug,
+    thumbnail: game.better_featured_image.media_details.sizes.thumbnail.source_url,
+    title: game.title.rendered,
+    excerpt: game.excerpt.rendered,
+    plataforma: game.plataforma, //game.plataforma,
+    cover: game.acf.cover,
+    desenvolvedora: game.acf.desenvolvedores[0].desenvolvedor.title.rendered,
+    lancamento: game.acf.datas_plataforma[0].data_lancamento
+  }
+}
+
+function mapCategory(data) {
+  return {id: data.id, slug: data.slug, name: data.name}
+}
+
+export function getCategory(data) {
+  let category = 'x';
+
+  if (data !== '') {
+
+    const request = axios.get(WP.url + WP.types.plataforma + '/' + data, {})
+
+    request.then(resp => {
+      category = mapCategory(resp.data)
+      console.log(category.name);
+      return category.name
+    })
+
+  } else {
+    console.log('erro');
+    return category;
+  }
+}
+
+export function getCategories(data) {
+
+  let categories = [];
+
+  if (data.length > 0) {
+    for (let i = 0; i < data.length; i++) {
+      const request = axios.get(WP.url + WP.types.plataforma + '/' + data[i], {})
+      request.then(resp => {
+        categories.push(mapCategory(resp.data))
+        return categories
+      })
+    }
+
+    return categories
+
+  } else {
+    return [];
+  }
+}
+
 export function getRecentsPostsByCategoryId(categories_id, typename) {
   return function (dispatch) {
     const request = axios.get(WP.url + WP.types.posts, {
@@ -29,6 +97,25 @@ export function getRecentsPostsByCategoryId(categories_id, typename) {
         payload: resp
           .data
           .map(mapRecent)
+      })
+    })
+  }
+}
+
+export function getGames() {
+  return function (dispatch) {
+    const request = axios.get(WP.url + WP.types.games, {
+      params: {
+        per_page: 1
+      }
+    })
+
+    request.then(resp => {
+      dispatch({
+        type: 'RECENT_HERO',
+        payload: resp
+          .data
+          .map(mapGame)
       })
     })
   }

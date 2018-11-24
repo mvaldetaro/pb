@@ -12,7 +12,7 @@ class GamesList extends Component {
   componentWillMount() {
     this
       .props
-      .getGames(this.props.searchString);
+      .getGames(this.props.filter);
     this
       .props
       .getCategories(2, 'GET_CATEGORIES');
@@ -25,10 +25,10 @@ class GamesList extends Component {
   //componentDidUpdate(prevProps, prevState, snapshot) {
 
   componentDidUpdate(prevProps) {
-    if (prevProps.searchString !== this.props.searchString) {
+    if (prevProps.filter !== this.props.filter) {
       this
         .props
-        .getGames(this.props.searchString);
+        .getGames(this.props.filter);
     }
   }
 
@@ -55,7 +55,7 @@ class GamesList extends Component {
 }
 
 function mapStateToProps(state) {
-  return {searchString: state.search.searchString, games: state.games.games}
+  return {filter: state.search.filter, games: state.games.games}
 }
 
 function mapDispatchToProps(dispatch) {

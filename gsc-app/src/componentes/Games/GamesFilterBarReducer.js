@@ -1,5 +1,5 @@
 const INITIAL_STATE = {
-  searchString: ''
+  filter: {}
 }
 
 export default function (state = INITIAL_STATE, action) {
@@ -7,7 +7,7 @@ export default function (state = INITIAL_STATE, action) {
     case "SEARCH_GAME":
       return {
         ...state,
-        searchString: action.payload
+        filter: action.payload
       }
     default:
       return state
