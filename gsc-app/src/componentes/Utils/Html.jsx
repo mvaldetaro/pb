@@ -1,10 +1,10 @@
 import React from 'react';
 
 const Html = (props) => {
-  const {html} = props;
+  const {html, className} = props;
 
   return (
-    <div dangerouslySetInnerHTML={{
+    <div className={className} dangerouslySetInnerHTML={{
       __html: html
     }}></div>
   )

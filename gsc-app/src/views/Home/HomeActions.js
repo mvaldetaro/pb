@@ -87,7 +87,8 @@ export function getRecentsPostsByCategoryId(categories_id, typename) {
   return function (dispatch) {
     const request = axios.get(WP.url + WP.types.posts, {
       params: {
-        categories: categories_id
+        categories: categories_id,
+        per_page: 8
       }
     })
 
@@ -106,13 +107,22 @@ export function getGames() {
   return function (dispatch) {
     const request = axios.get(WP.url + WP.types.games, {
       params: {
-        per_page: 1
+        per_page: 6
       }
     })
 
     request.then(resp => {
       dispatch({
         type: 'RECENT_HERO',
+        payload: [
+          resp
+            .data
+            .map(mapGame)[0]
+        ]
+      })
+
+      dispatch({
+        type: 'RECENT_GAMES',
         payload: resp
           .data
           .map(mapGame)

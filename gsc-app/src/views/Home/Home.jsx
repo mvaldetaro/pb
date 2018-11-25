@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {Component, Fragment} from 'react';
 import {Link} from 'react-router-dom'
 import {
   Button,
@@ -42,13 +42,11 @@ class Home extends Component {
 
   componentDidMount() {
     //console.log(this.props.recentHero[0]) console.log(this.props);
-
   }
 
   componentDidUpdate() {}
 
   getCategoryName(id, arr) {
-
     let name = [];
     arr.map((item, i) => {
 
@@ -56,7 +54,6 @@ class Home extends Component {
         name.push(item.name)
       }
     })
-    console.log(name)
     return name.join();
   }
 
@@ -68,163 +65,180 @@ class Home extends Component {
       recentTrailers,
       recentNews,
       recentHero,
-      plataformas
+      plataformas,
+      recentGames
     } = this.props;
 
     return (
-      <Grid
-        container
-        direction="column"
-        justify="flex-start"
-        alignItems="flex-start"
-        id="home">
-        <Grid item xs={12}>
-          <section className="hero">
-            {recentHero
-              ? (
-                <div>
-                  {recentHero.map((current, i) => (
-                    <div key={i}>
-                      <div className="plataformas">
-                        {current
-                          .plataforma
-                          .map((item, i) => (
-                            <span key={i}>{this.getCategoryName(item, plataformas)}</span>
-                          ))}
+      <Fragment>
+
+        <Grid
+          container
+          direction="column"
+          justify="flex-start"
+          alignItems="flex-start"
+          id="home">
+          <Grid item xs={12}>
+            <section className="hero">
+              {recentHero
+                ? (
+                  <div>
+                    {recentHero.map((current, i) => (
+                      <div
+                        key={i}
+                        style={{
+                        background: `url(${current.cover}) no-repeat center center`,
+                        backgroundSize: 'cover'
+                      }}>
+                        <div className={'current'}>
+
+                          <Typography variant={'caption'} className="plataformas">
+                            {current
+                              .plataforma
+                              .map((item, i) => (
+                                <span key={i} className="plataformaItem">{this.getCategoryName(item, plataformas)}</span>
+                              ))}
+                          </Typography>
+                          <Typography variant={'display3'} className="title">{current.title}</Typography>
+
+                          <p>{`${current.desenvolvedora} | ${current.lancamento}`}</p>
+                          <Html className="description" html={current.excerpt}/>
+
+                          <Button
+                            variant={'outlined'}
+                            color={'secondary'}
+                            size={'large'}
+                            component={Link}
+                            to={`/game/${current.slug}`}>Conheça mais sobre {current.title}</Button>
+
+                          {/*<Button>Comprar</Button>*/}
+                        </div>
+
                       </div>
-                      <h1 className="title">{current.title}</h1>
-                      <Html className="desc" html={current.excerpt}/>
-                      <p>{current.desenvolvedora}
-                        | {current.lancamento}</p>
+                    ))}
+                  </div>
+                )
+                : <Typography variant={'display3'} className="title">Nenhum jogo cadastrado</Typography>}
+            </section>
+          </Grid>
+        </Grid>
 
-                      <Button
-                        variant={'outlined'}
-                        color={'primary'}
-                        size={'large'}
-                        component={Link}
-                        to={`/game/${current.slug}`}>Visitar</Button>
-                      {/*<Button>Comprar</Button>*/}
-                    </div>
-                  ))}
-                </div>
-              )
-              : <p>No Hero</p>}
+        <div className={'hackContainer'}>
+
+          <section className="jogosRecentes">
+            <ListGridRecent
+              title={'Publicados recentemente'}
+              category={'games'}
+              data={recentGames}
+              xs={6}
+              sm={3}
+              md={2}
+              lg={2}
+              xl={2}></ListGridRecent>
           </section>
-        </Grid>
 
-        <Grid
-          container
-          direction="row"
-          justify="flex-start"
-          alignItems="flex-start"
-          id="content"
-          spacing={24}>
-          <Grid item xs={12}>
-            <section className="recentes">
-              <Typography variant={'display1'}>Jogos publicados recentemente</Typography>
-              <p>list</p>
-            </section>
-          </Grid>
+        </div>
+        <div className={'comunidade'}>
+          <div className={'hackContainer'}>
 
-        </Grid>
+            <Grid
+              container
+              direction="row"
+              justify="flex-start"
+              alignItems="flex-start"
+              id="content"
+              spacing={24}>
 
-        <Grid
-          container
-          direction="row"
-          justify="flex-start"
-          alignItems="flex-start"
-          id="content"
-          spacing={24}>
+              <Grid item xs={12}>
+                <div className="rgb">
+                  <span className="r"></span>
+                  <span className="g"></span>
+                  <span className="b"></span>
+                </div>
+                <Typography variant={'display1'}>Comunidade Gamer</Typography>
+              </Grid>
 
-          <Grid item xs={12}>
-            <div className="ads">ads banner</div>
-            <Typography variant={'display1'}>Comunidade Gamer</Typography>
-          </Grid>
+              <Grid item xs={12} sm={4}>
 
-          <Grid item xs={12} sm={4}>
-
-            <section className="podcasts">
-              <Typography variant={'title'}>Podcasts</Typography>
-              {recentPodcasts
-                ? (
-                  <List>
-                    {recentPodcasts.map((current, i) => (
-                      <ListItem key={i}>
-                        <Avatar alt={current.title} src={current.thumbnail}/>
-                        <ListItemText>
-                          <a href={`/podcasts/${current.slug}`}>{current.title}</a>
-                        </ListItemText>
-                      </ListItem>
-                    ))}
-                  </List>
-                )
-                : "Nenhuma notícia"
+                <section className="podcasts">
+                  <Typography className="podcasts" variant={'title'} className="commTitle">Podcasts</Typography>
+                  {recentPodcasts
+                    ? (
+                      <List>
+                        {recentPodcasts.map((current, i) => (
+                          <ListItem dividerkey={i} disableGutters>
+                            <Avatar alt={current.title} src={current.thumbnail}/>
+                            <ListItemText>
+                              <a className="listLink" href={`/podcasts/${current.slug}`}>{current.title}</a>
+                            </ListItemText>
+                          </ListItem>
+                        ))}
+                      </List>
+                    )
+                    : "Nenhuma notícia"
 }
-            </section>
-          </Grid>
+                </section>
+              </Grid>
 
-          <Grid item xs={12} sm={4}>
-            <section className="channels">
-              <Typography variant={'title'}>Canais</Typography>
-              {recentChannels
-                ? (
-                  <List>
-                    {recentChannels.map((current, i) => (
-                      <ListItem key={i}>
-                        <Avatar alt={current.title} src={current.thumbnail}/>
-                        <ListItemText>
-                          <a href={`/channels/${current.slug}`}>{current.title}</a>
-                        </ListItemText>
-                      </ListItem>
-                    ))}
-                  </List>
-                )
-                : "Nenhuma notícia"
+              <Grid item xs={12} sm={4}>
+                <section className="channels">
+                  <Typography variant={'title'} className="commTitle">Vídeos</Typography>
+                  {recentChannels
+                    ? (
+                      <List>
+                        {recentChannels.map((current, i) => (
+                          <ListItem key={i} disableGutters>
+                            <Avatar alt={current.title} src={current.thumbnail}/>
+                            <ListItemText>
+                              <a className="listLink" href={`/channels/${current.slug}`}>{current.title}</a>
+                            </ListItemText>
+                          </ListItem>
+                        ))}
+                      </List>
+                    )
+                    : "Nenhuma notícia"
 }
-            </section>
-          </Grid>
+                </section>
+              </Grid>
 
-          <Grid item xs={12} sm={4}>
-            <div className="ads">ads square</div>
+              <Grid item xs={12} sm={4}>
 
-            <section className="noticias">
-              <Typography variant={'title'}>Notícias Recentes</Typography>
-              {recentNews
-                ? (
-                  <List>
-                    {recentNews.map((current, i) => (
-                      <ListItem key={i}>
-                        <Avatar alt={current.title} src={current.thumbnail}/>
-                        <ListItemText>
-                          <a href={`/noticias/${current.slug}`}>{current.title}</a>
-                        </ListItemText>
-                      </ListItem>
-                    ))}
-                  </List>
-                )
-                : <p>Nenhuma notícia</p>
+                <section className="noticias">
+                  <Typography variant={'title'} className="commTitle">Notícias Recentes</Typography>
+                  {recentNews
+                    ? (
+                      <List>
+                        {recentNews.map((current, i) => (
+                          <ListItem key={i} disableGutters>
+                            <Avatar alt={current.title} src={current.thumbnail}/>
+                            <ListItemText>
+                              <a className="listLink" href={`/noticias/${current.slug}`}>{current.title}</a>
+                            </ListItemText>
+                          </ListItem>
+                        ))}
+                      </List>
+                    )
+                    : <p>Nenhuma notícia</p>
 }
-            </section>
-          </Grid>
-        </Grid>
-
-        <Grid
-          container
-          direction="row"
-          justify="flex-start"
-          alignItems="flex-start"
-          id="content"
-          spacing={24}>
-
-          <Grid item xs={12}>
-            <section className="trailers">
-              <ListGridRecent title={'Trailers'} category={'trailers'} data={recentTrailers}></ListGridRecent>
-            </section>
-          </Grid>
-
-        </Grid>
-      </Grid>
-
+                </section>
+              </Grid>
+            </Grid>
+          </div>
+        </div>
+        <div className="trailers">
+          <div className={'hackContainer'}>
+            <ListGridRecent
+              title={'Game Trailers'}
+              category={'trailers'}
+              data={recentTrailers}
+              xs={6}
+              sm={6}
+              md={4}
+              lg={3}
+              xl={3}></ListGridRecent>
+          </div>
+        </div>
+      </Fragment>
     );
   }
 }
@@ -236,6 +250,7 @@ function mapStateToProps(state) {
     recentTrailers: state.home.recentTrailers,
     recentNews: state.home.recentNews,
     recentHero: state.home.recentHero,
+    recentGames: state.home.recentGames,
     plataformas: state.taxonomies.plataformas,
     generos: state.taxonomies.generos,
     release: state.taxonomies.release

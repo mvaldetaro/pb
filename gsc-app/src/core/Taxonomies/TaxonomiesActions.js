@@ -8,7 +8,11 @@ function mapCategory(data) {
 export function retrieveTaxonomies(taxonomie, reducerType) {
 
   return function (dispatch) {
-    const request = axios.get(WP.url + WP.types[taxonomie], {params: {}})
+    const request = axios.get(WP.url + WP.types[taxonomie], {
+      params: {
+        per_page: 100
+      }
+    })
     request.then(resp => {
       dispatch({
         type: reducerType,

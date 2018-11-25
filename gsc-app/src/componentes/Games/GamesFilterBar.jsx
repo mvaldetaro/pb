@@ -14,6 +14,18 @@ import {bindActionCreators} from "redux";
 
 import {onSearch} from "./GamesFilterBarActions";
 
+const ITEM_HEIGHT = 48;
+const ITEM_PADDING_TOP = 8;
+
+const MenuProps = {
+  PaperProps: {
+    style: {
+      maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
+      width: 250
+    }
+  }
+};
+
 class GamesFilterBar extends Component {
 
   constructor(props) {
@@ -22,7 +34,8 @@ class GamesFilterBar extends Component {
       search: '',
       plataforma: false,
       release: false,
-      genero: false
+      genero: false,
+      per_page: 100
     };
   }
 
@@ -76,7 +89,8 @@ class GamesFilterBar extends Component {
               fullWidth={true}
               margin="normal"
               SelectProps={{
-              displayEmpty: true
+              displayEmpty: true,
+              MenuProps: MenuProps
             }}>
               <MenuItem key={'all'} value={false}>{'Todas as plataformas'}</MenuItem>
               {plataformas.map(option => (
@@ -95,7 +109,8 @@ class GamesFilterBar extends Component {
               fullWidth={true}
               margin="normal"
               SelectProps={{
-              displayEmpty: true
+              displayEmpty: true,
+              MenuProps: MenuProps
             }}>
               <MenuItem key={'all'} value={false}>{'Gênero'}</MenuItem>
               {generos.map(option => (
@@ -114,7 +129,8 @@ class GamesFilterBar extends Component {
               fullWidth={true}
               margin="normal"
               SelectProps={{
-              displayEmpty: true
+              displayEmpty: true,
+              MenuProps: MenuProps
             }}>
 
               <MenuItem key={'all'} value={false}>{'Ano de lançamento'}</MenuItem>

@@ -5,6 +5,7 @@ const INITIAL_STATE = {
   recentTrailers: [],
   recentNews: [],
   recentHero: [],
+  recentGames: [],
   currentHeroPlataformas: []
 };
 
@@ -34,6 +35,11 @@ export default function (state = INITIAL_STATE, action) {
       return {
         ...state,
         recentHero: action.payload
+      }
+    case 'RECENT_GAMES':
+      return {
+        ...state,
+        recentGames: action.payload
       }
     default:
       return state

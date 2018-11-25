@@ -2,3 +2,89 @@
 
 .app {
 }
+
+.logo {
+  margin-right: 16px;
+}
+
+.container {
+  padding: 40px;
+}
+
+.hackContainer {
+  padding: 40px;
+}
+
+.commTitle {
+}
+
+.jogosRecentes {
+  padding: 24px 0;
+}
+
+.trailers {
+  padding: 24px 0;
+  background: url("./images/bg80.jpg") no-repeat bottom center;
+  background-size: cover;
+}
+.comunidade {
+  padding: 24px 0;
+  background-color: rgb(25, 9, 28);
+}
+
+.listLink {
+  text-decoration: none;
+}
+
+.listLink:hover {
+}
+
+.hero {
+  .current {
+    padding: 80px 40px;
+    background-color: rgba(25, 9, 28, 0.87);
+  }
+  .description {
+    width: 60%;
+    p {
+      line-height: 1.6rem;
+    }
+  }
+
+  .title {
+    color: #f70e4a;
+  }
+}
+
+.plataformaItem {
+  padding-right: 8px;
+  display: inline-block;
+}
+
+.rgb {
+  span {
+    display: block;
+    height: 2px;
+    width: 5%;
+    margin: 3px 0;
+  }
+  .r {
+    background-color: #f70e4a;
+  }
+  .g {
+    background-color: #24ea28;
+  }
+  .b {
+    background-color: #25a9f0;
+  }
+
+  &.full {
+    span {
+      width: 100%;
+    }
+  }
+}
+
+.gridListTitle {
+  color: #25a9f0;
+}

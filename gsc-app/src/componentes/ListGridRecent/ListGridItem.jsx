@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {Component, Fragment} from 'react';
 import {Cover} from "..";
 import {Paper, Typography} from "@material-ui/core";
 
@@ -8,14 +8,14 @@ class ListGridItem extends Component {
     const {title, thumbnail, slug} = this.props.data;
 
     return (
-      <Paper>
+      <div>
         <a href={`/${this.props.category}/${slug}`}>
           <Cover src={thumbnail} alt={title} width='100%'/>
         </a>
         <Typography variant={'body1'}>
           <a href={`/${this.props.category}/${slug}`}>{title}</a>
         </Typography>
-      </Paper>
+      </div>
     )
   }
 }
