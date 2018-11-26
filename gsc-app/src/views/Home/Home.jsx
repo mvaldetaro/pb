@@ -169,7 +169,7 @@ class Home extends Component {
                           <ListItem dividerkey={i} disableGutters>
                             <Avatar alt={current.title} src={current.thumbnail}/>
                             <ListItemText>
-                              <a className="listLink" href={`/podcasts/${current.slug}`}>{current.title}</a>
+                              <a className="listLink" href={`/podcasts/${current.slug}`}><Html html={current.title}/></a>
                             </ListItemText>
                           </ListItem>
                         ))}
@@ -190,7 +190,7 @@ class Home extends Component {
                           <ListItem key={i} disableGutters>
                             <Avatar alt={current.title} src={current.thumbnail}/>
                             <ListItemText>
-                              <a className="listLink" href={`/channels/${current.slug}`}>{current.title}</a>
+                              <a className="listLink" href={`/channels/${current.slug}`}><Html html={current.title}/></a>
                             </ListItemText>
                           </ListItem>
                         ))}
@@ -212,7 +212,7 @@ class Home extends Component {
                           <ListItem key={i} disableGutters>
                             <Avatar alt={current.title} src={current.thumbnail}/>
                             <ListItemText>
-                              <a className="listLink" href={`/noticias/${current.slug}`}>{current.title}</a>
+                              <a className="listLink" href={`/noticias/${current.slug}`}><Html html={current.title}/></a>
                             </ListItemText>
                           </ListItem>
                         ))}
