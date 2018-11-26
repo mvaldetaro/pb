@@ -87,7 +87,8 @@ const theme = createMuiTheme({
       root: {
         borderRadius: 0,
         width: '72px',
-        height: '72px'
+        height: '72px',
+        borderRight: '3px solid #19091C'
       }
     },
 
@@ -96,12 +97,18 @@ const theme = createMuiTheme({
         paddingTop: 0,
         paddingBottom: 0,
         margin: '12px 0 24px 0',
-        border: '1px solid transparent',
+        //backgroundColor: 'rgba(0,0,0, .13)', border: '1px solid transparent',
         '&:hover': {
-          //backgroundColor: '#f70e4a',
-          border: '1px solid #f70e4a',
+          background: '#e82952',
+          background: 'linear-gradient(to right bottom, #e82952 , #ff1aa9)',
+          // backgroundColor: '#f70e4a', border: '1px solid #f70e4a',
           color: '#f70e4a'
         }
+      }
+    },
+    MuiListItemText: {
+      root: {
+        textTransform: 'capitalize'
       }
     }
   },
