@@ -8,13 +8,17 @@ class ListGridItem extends Component {
     const {title, thumbnail, slug} = this.props.data;
 
     return (
-      <div>
-        <a href={`/${this.props.category}/${slug}`}>
+      <div className={'gridItem'}>
+        <a href={`/${this.props.category}/${slug}`} className={'gridItemLink'}>
           <Cover src={thumbnail} alt={title} width='100%'/>
+          <div className="mask">
+            <div className="title">
+              <Typography variant={'body1'}>
+                <a className={'titleLink'} href={`/${this.props.category}/${slug}`}>{title}</a>
+              </Typography>
+            </div>
+          </div>
         </a>
-        <Typography variant={'body1'}>
-          <a href={`/${this.props.category}/${slug}`}>{title}</a>
-        </Typography>
       </div>
     )
   }

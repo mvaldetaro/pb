@@ -131,7 +131,7 @@ class Home extends Component {
               category={'games'}
               data={recentGames}
               xs={6}
-              sm={3}
+              sm={4}
               md={2}
               lg={2}
               xl={2}></ListGridRecent>
@@ -158,7 +158,7 @@ class Home extends Component {
                 <Typography variant={'display1'}>Comunidade Gamer</Typography>
               </Grid>
 
-              <Grid item xs={12} sm={4}>
+              <Grid item xs={12} sm={12} md={4}>
 
                 <section className="podcasts">
                   <Typography className="podcasts" variant={'title'} className="commTitle">Podcasts</Typography>
@@ -166,12 +166,18 @@ class Home extends Component {
                     ? (
                       <List>
                         {recentPodcasts.map((current, i) => (
-                          <ListItem dividerkey={i} disableGutters>
-                            <Avatar alt={current.title} src={current.thumbnail}/>
-                            <ListItemText>
-                              <a className="listLink" href={`/podcasts/${current.slug}`}><Html html={current.title}/></a>
-                            </ListItemText>
-                          </ListItem>
+                          <a href={`/podcasts/${current.slug}`} className="listLink">
+                            <ListItem dividerkey={i} disableGutters>
+
+                              <Avatar alt={current.title} src={current.thumbnail}/>
+                              <ListItemText>
+                                <span className="listLink">
+                                  <Html html={current.title}/>
+                                </span>
+                              </ListItemText>
+
+                            </ListItem>
+                          </a>
                         ))}
                       </List>
                     )
@@ -180,19 +186,23 @@ class Home extends Component {
                 </section>
               </Grid>
 
-              <Grid item xs={12} sm={4}>
+              <Grid item xs={12} sm={12} md={4}>
                 <section className="channels">
                   <Typography variant={'title'} className="commTitle">Vídeos</Typography>
                   {recentChannels
                     ? (
                       <List>
                         {recentChannels.map((current, i) => (
-                          <ListItem key={i} disableGutters>
-                            <Avatar alt={current.title} src={current.thumbnail}/>
-                            <ListItemText>
-                              <a className="listLink" href={`/channels/${current.slug}`}><Html html={current.title}/></a>
-                            </ListItemText>
-                          </ListItem>
+                          <a className="listLink" href={`/channels/${current.slug}`}>
+                            <ListItem key={i} disableGutters>
+                              <Avatar alt={current.title} src={current.thumbnail}/>
+                              <ListItemText>
+                                <span className="listLink">
+                                  <Html html={current.title}/>
+                                </span>
+                              </ListItemText>
+                            </ListItem>
+                          </a>
                         ))}
                       </List>
                     )
@@ -201,7 +211,7 @@ class Home extends Component {
                 </section>
               </Grid>
 
-              <Grid item xs={12} sm={4}>
+              <Grid item xs={12} sm={12} md={4}>
 
                 <section className="noticias">
                   <Typography variant={'title'} className="commTitle">Notícias Recentes</Typography>
@@ -209,12 +219,16 @@ class Home extends Component {
                     ? (
                       <List>
                         {recentNews.map((current, i) => (
-                          <ListItem key={i} disableGutters>
-                            <Avatar alt={current.title} src={current.thumbnail}/>
-                            <ListItemText>
-                              <a className="listLink" href={`/noticias/${current.slug}`}><Html html={current.title}/></a>
-                            </ListItemText>
-                          </ListItem>
+                          <a className="listLink" href={`/noticias/${current.slug}`}>
+                            <ListItem key={i} disableGutters>
+                              <Avatar alt={current.title} src={current.thumbnail}/>
+                              <ListItemText>
+                                <span className="listLink">
+                                  <Html html={current.title}/>
+                                </span>
+                              </ListItemText>
+                            </ListItem>
+                          </a>
                         ))}
                       </List>
                     )

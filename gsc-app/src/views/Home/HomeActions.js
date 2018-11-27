@@ -30,7 +30,7 @@ function mapGame(game) {
   return {
     id: game.id,
     slug: game.slug,
-    thumbnail: game.better_featured_image.media_details.sizes.thumbnail.source_url,
+    thumbnail: game.better_featured_image.media_details.sizes.vgcserviceThumbnailGrid.source_url,
     title: game.title.rendered,
     excerpt: game.excerpt.rendered,
     plataforma: game.plataforma, //game.plataforma,
