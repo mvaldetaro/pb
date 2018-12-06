@@ -1,18 +1,22 @@
-import React, {Component, Fragment} from 'react';
-import {Link} from "react-router-dom";
+import React, { Component, Fragment } from "react";
+import { Link } from "react-router-dom";
+
+import { Typography } from "@material-ui/core";
 
 class Lancamento extends Component {
-
   render() {
-
-    const {lancamento, slug, title, type} = this.props.lancamento;
+    const { lancamento, slug, title, type } = this.props.lancamento;
 
     return (
       <Fragment>
-        <span>{lancamento}</span><br/>
-        <Link to={`/${type}/${slug}`}>{title}</Link>
+        <Typography variant={"p"} color={"textPrimary"} gutterBottom>
+          <b>{lancamento}</b>
+        </Typography>
+        <Typography variant={"caption"} color={"textPrimary"} gutterBottom>
+          <Link to={`/${type}/${slug}`}>{title}</Link>
+        </Typography>
       </Fragment>
-    )
+    );
   }
 }
 

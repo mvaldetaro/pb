@@ -1,35 +1,40 @@
-import React, {Component} from 'react';
+import React, { Component } from "react";
 import Publisher from "./Publisher";
 
-class Publishers extends Component {
+import { Typography } from "@material-ui/core";
 
+class Publishers extends Component {
   mapPublishers(arr) {
-    let mapy = []
+    let mapy = [];
     if (arr) {
-      mapy = arr.map((current, i) => ({"slug": current.publicadora.slug, "type": current.publicadora.type, "title": current.publicadora.title.rendered}));
+      mapy = arr.map((current, i) => ({
+        slug: current.publicadora.slug,
+        type: current.publicadora.type,
+        title: current.publicadora.title.rendered
+      }));
     }
     return mapy;
   }
 
   render() {
     return (
-      <div>
-        <h2>Publishers</h2>
-        {this.props.data
-          ? (
-            <ul>
-              {this
-                .mapPublishers(this.props.data)
-                .map((currentPublisher, i) => (
-                  <li key={i}>
-                    <Publisher publisher={currentPublisher}/>
-                  </li>
-                ))}
-            </ul>
-          )
-          : "Nenhum publisher encontrado"}
+      <div className={"publishers"}>
+        <Typography className={"resumeTitle"} variant={"title"} gutterBottom>
+          Publishers
+        </Typography>
+        {this.props.data ? (
+          <ul>
+            {this.mapPublishers(this.props.data).map((currentPublisher, i) => (
+              <li key={i}>
+                <Publisher publisher={currentPublisher} />
+              </li>
+            ))}
+          </ul>
+        ) : (
+          "Nenhum publisher encontrado"
+        )}
       </div>
-    )
+    );
   }
 }
 

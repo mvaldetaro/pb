@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {Component, Fragment} from 'react';
 import {
   TextField,
   FormControl,
@@ -69,82 +69,85 @@ class GamesFilterBar extends Component {
     const {plataformas, releases, generos} = this.props;
 
     return (
-      <div className="root">
-        <Grid container spacing={16}>
-          <Grid item xs={12} sm={6} md={3}>
-            <TextField
-              id="searchInput"
-              placeholder="Buscar por nome"
-              value={this.state.search}
-              margin="normal"
-              onChange={this.handleChange('search')}
-              fullWidth={true}/>
-          </Grid>
-          <Grid item xs={12} sm={6} md={3}>
-            <TextField
-              id="plataformas"
-              select
-              value={this.state.plataforma}
-              onChange={this.handleChange('plataforma')}
-              fullWidth={true}
-              margin="normal"
-              SelectProps={{
-              displayEmpty: true,
-              MenuProps: MenuProps
-            }}>
-              <MenuItem key={'all'} value={false}>{'Todas as plataformas'}</MenuItem>
-              {plataformas.map(option => (
-                <MenuItem key={option.id} value={option.id}>
-                  {option.name}
-                </MenuItem>
-              ))}
-            </TextField>
-          </Grid>
-          <Grid item xs={12} sm={6} md={3}>
-            <TextField
-              id="genero"
-              select
-              value={this.state.genero}
-              onChange={this.handleChange('genero')}
-              fullWidth={true}
-              margin="normal"
-              SelectProps={{
-              displayEmpty: true,
-              MenuProps: MenuProps
-            }}>
-              <MenuItem key={'all'} value={false}>{'Gênero'}</MenuItem>
-              {generos.map(option => (
-                <MenuItem key={option.id} value={option.id}>
-                  {option.name}
-                </MenuItem>
-              ))}
-            </TextField>
-          </Grid>
-          <Grid item xs={12} sm={6} md={3}>
-            <TextField
-              id="ano"
-              select
-              value={this.state.release}
-              onChange={this.handleChange('release')}
-              fullWidth={true}
-              margin="normal"
-              SelectProps={{
-              displayEmpty: true,
-              MenuProps: MenuProps
-            }}>
+      <Fragment>
+        <div className="filterBar">
+          <div className={'hackContainer'}>
+            <Grid container spacing={24}>
+              <Grid item xs={12} sm={12} md={6} lg={3}>
+                <TextField
+                  id="searchInput"
+                  placeholder="Buscar por nome"
+                  value={this.state.search}
+                  margin="normal"
+                  onChange={this.handleChange('search')}
+                  fullWidth={true}/>
+              </Grid>
+              <Grid item xs={12} sm={4} md={6} lg={3}>
+                <TextField
+                  id="plataformas"
+                  select
+                  value={this.state.plataforma}
+                  onChange={this.handleChange('plataforma')}
+                  fullWidth={true}
+                  margin="normal"
+                  SelectProps={{
+                  displayEmpty: true,
+                  MenuProps: MenuProps
+                }}>
+                  <MenuItem key={'all'} value={false}>{'Todas as plataformas'}</MenuItem>
+                  {plataformas.map(option => (
+                    <MenuItem key={option.id} value={option.id}>
+                      {option.name}
+                    </MenuItem>
+                  ))}
+                </TextField>
+              </Grid>
+              <Grid item xs={12} sm={4} md={6} lg={3}>
+                <TextField
+                  id="genero"
+                  select
+                  value={this.state.genero}
+                  onChange={this.handleChange('genero')}
+                  fullWidth={true}
+                  margin="normal"
+                  SelectProps={{
+                  displayEmpty: true,
+                  MenuProps: MenuProps
+                }}>
+                  <MenuItem key={'all'} value={false}>{'Gênero'}</MenuItem>
+                  {generos.map(option => (
+                    <MenuItem key={option.id} value={option.id}>
+                      {option.name}
+                    </MenuItem>
+                  ))}
+                </TextField>
+              </Grid>
+              <Grid item xs={12} sm={4} md={6} lg={3}>
+                <TextField
+                  id="ano"
+                  select
+                  value={this.state.release}
+                  onChange={this.handleChange('release')}
+                  fullWidth={true}
+                  margin="normal"
+                  SelectProps={{
+                  displayEmpty: true,
+                  MenuProps: MenuProps
+                }}>
 
-              <MenuItem key={'all'} value={false}>{'Ano de lançamento'}</MenuItem>
-              {releases.map(option => (
-                <MenuItem key={option.id} value={option.id}>
-                  {option.name}
-                </MenuItem>
-              ))}
-            </TextField>
-          </Grid>
-        </Grid>
+                  <MenuItem key={'all'} value={false}>{'Ano de lançamento'}</MenuItem>
+                  {releases.map(option => (
+                    <MenuItem key={option.id} value={option.id}>
+                      {option.name}
+                    </MenuItem>
+                  ))}
+                </TextField>
+              </Grid>
+            </Grid>
+          </div>
+        </div>
         <Divider/>
-
-      </div>
+      </Fragment>
     )
   }
 }

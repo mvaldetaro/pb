@@ -6,7 +6,17 @@ class ListGridRecent extends Component {
 
   render() {
 
-    const {xs, sm, md, lg, xl} = this.props;
+    const {
+      xs,
+      sm,
+      md,
+      lg,
+      xl,
+      child
+    } = this.props;
+
+    const Component = child;
+
     return (this.props.data
       ? (
         <Grid
@@ -22,14 +32,16 @@ class ListGridRecent extends Component {
               <span className="b"></span>
             </div>
             <Typography variant={'display1'} className={'gridListTitle'}>{this.props.title}</Typography>
-
           </Grid>
           {this
             .props
             .data
             .map((currentData, i) => (
               <Grid item key={i} xs={xs} sm={sm} md={md} lg={lg} xl={xl}>
-                <ListGridItem category={this.props.category} data={currentData}/>
+                {child
+                  ? <Component category={this.props.category} data={currentData}/>
+                  : <ListGridItem category={this.props.category} data={currentData}/>
+}
               </Grid>
             ))}
         </Grid>

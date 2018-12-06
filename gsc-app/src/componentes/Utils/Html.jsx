@@ -20,23 +20,23 @@ const Html = (props) => {
       '&#8220;': '"'
     };
 
-    return text.replace(/&[\w\d#]{2,5};/g, function (m) {
-      return map[m]
-    });
+    if (text) {
+      return text.replace(/&[\w\d#]{2,5};/g, function (m) {
+        return map[m]
+      });
+    }
+    return ''
 
   };
 
   const content = escapeHtml(html)
 
-  console.log(html);
-  console.log(content);
-
   return (
-    <div
+    <span
       className={className}
       dangerouslySetInnerHTML={{
       __html: content
-    }}></div>
+    }}></span>
   )
 }
 

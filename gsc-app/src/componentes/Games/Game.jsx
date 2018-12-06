@@ -8,30 +8,32 @@ import {
   Button,
   Typography
 } from "@material-ui/core";
+
+import {Cover} from "..";
 import {withStyles} from '@material-ui/core/styles';
 
 const Game = (props) => {
-  const {slug, thumbnail, title, plataforma} = props.game;
+  const {slug, thumbnail, title, desenvolvedora, lancamento} = props.game;
 
   const link = <Link to={'game/' + slug}>
     <Typography variant="title">{title}</Typography>
   </Link>
 
   return (
-    <Card>
-      <CardContent>
-        <CardMedia
-          component="img"
-          alt={title}
-          className=""
-          height="140"
-          image={thumbnail}
-          title={title}/>
-      </CardContent>
+    <div className={'gridItem'}>
 
-      {link}
-
-    </Card>
+      <Link to={'game/' + slug} className={'gridItemLink'}>
+        <Cover src={thumbnail} alt={title} width='100%'/>
+        <div className="mask">
+          <div className="title">
+            <Typography variant={'body1'}>
+              <div className={'titleLink'}>{title}</div>
+            </Typography>
+            <Typography variant={'caption'}>{`${desenvolvedora} - ${lancamento}`}</Typography>
+          </div>
+        </div>
+      </Link>
+    </div>
   );
 }
 

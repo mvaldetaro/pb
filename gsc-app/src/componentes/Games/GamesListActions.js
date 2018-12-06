@@ -5,10 +5,12 @@ function mapGame(game) {
   return {
     id: game.id,
     slug: game.slug,
-    thumbnail: game.better_featured_image.media_details.sizes.thumbnail.source_url,
+    thumbnail: game.better_featured_image.media_details.sizes.vgcserviceThumbnailGridLg.source_url,
     title: game.title.rendered,
     excerpt: game.excerpt.rendered,
-    plataforma: game.acf.datas_plataforma[0].plataforma.post_title
+    plataforma: game.plataforma,
+    desenvolvedora: game.acf.desenvolvedores[0].desenvolvedor.title.rendered,
+    lancamento: game.acf.datas_plataforma[0].data_lancamento
   }
 }
 

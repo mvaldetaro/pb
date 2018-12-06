@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {Grid} from "@material-ui/core";
-import {withStyles} from '@material-ui/core/styles';
+import {Divider} from '@material-ui/core';
 import Game from './Game';
 import {connect} from 'react-redux';
 import {bindActionCreators} from "redux";
@@ -37,18 +37,21 @@ class GamesList extends Component {
       <div className="game-list">
         {this.props.games
           ? (
-            <Grid container spacing={16}>
-              {this
-                .props
-                .games
-                .map((currentGame, i) => (
-                  <Grid item xs={12} sm={6} lg={4} xl={3} key={i}>
-                    <Game game={currentGame}></Game>
-                  </Grid>
-                ))}
-            </Grid>
+            <div className={'hackContainer'}>
+              <Grid container spacing={24}>
+                {this
+                  .props
+                  .games
+                  .map((currentGame, i) => (
+                    <Grid key={i} item xs={6} sm={4} md={3} lg={3} xl={3}>
+                      <Game game={currentGame}></Game>
+                    </Grid>
+                  ))}
+              </Grid>
+            </div>
           )
           : "Nenhum game encontrado"}
+        <Divider></Divider>
       </div>
     )
   }

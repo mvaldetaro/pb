@@ -1,21 +1,29 @@
-import React, {Component, Fragment} from 'react';
-import {Cover} from "../../componentes";
+import React, { Component, Fragment } from "react";
+import { Cover } from "../../componentes";
+import { Paper, Typography } from "@material-ui/core";
 
 class Podcast extends Component {
   render() {
-
-    const {thumbnail_podcasts, titulo_podcasts, url_podcasts} = this.props.podcast;
+    const {
+      thumbnail_podcasts,
+      titulo_podcasts,
+      url_podcasts
+    } = this.props.podcast;
 
     return (
-      <Fragment>
-        <a href={url_podcasts}>
-          <Cover src={thumbnail_podcasts} alt={titulo_podcasts} width='200px'/>
+      <div className={"gridItem"}>
+        <a href={url_podcasts} className={"gridItemLink"}>
+          <Cover src={thumbnail_podcasts} alt={titulo_podcasts} />
+          <div className="mask">
+            <div className="title">
+              <Typography variant={"body1"}>
+                <b>{titulo_podcasts}</b>
+              </Typography>
+            </div>
+          </div>
         </a>
-        <p>
-          <a href={url_podcasts}>{titulo_podcasts}</a>
-        </p>
-      </Fragment>
-    )
+      </div>
+    );
   }
 }
 

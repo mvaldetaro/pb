@@ -1,16 +1,13 @@
-import React from 'react';
+import React from "react";
 
-const Cover = (props) => {
+const Cover = props => {
+  const { src, alt, ...attrs } = props;
 
-  const {
-    src,
-    alt,
-    ...attrs
-  } = props
-
-  return (src
-    ? <img src={src} alt={alt} {...attrs}/>
-    : false)
+  return src ? (
+    <img src={src} alt={alt} {...attrs} className={"imgFluid"} />
+  ) : (
+    false
+  );
 };
 
 export default Cover;

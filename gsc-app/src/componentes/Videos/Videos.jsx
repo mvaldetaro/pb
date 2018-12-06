@@ -1,28 +1,39 @@
-import React, {Component} from 'react';
+import React, { Component } from "react";
 import Video from "./Video";
 
-class Videos extends Component {
+import { Typography, Grid } from "@material-ui/core";
 
+class Videos extends Component {
   render() {
     return (
-      <div>
-        <h2>Vídeos</h2>
-        {this.props.data
-          ? (
-            <ul>
-              {this
-                .props
-                .data
-                .map((currentVideo, i) => (
-                  <li key={i}>
-                    <Video video={currentVideo}/>
-                  </li>
-                ))}
-            </ul>
-          )
-          : "Nenhum video encontrado"}
+      <div className={"videos"}>
+        <Typography className={"resumeTitle"} variant={"display1"} gutterBottom>
+          Vídeos
+        </Typography>
+        <Grid
+          container
+          direction="row"
+          justify="flex-start"
+          alignItems="flex-start"
+          spacing={24}
+        >
+          {this.props.data
+            ? this.props.data.map((currentVideo, i) => (
+                <Grid
+                  item
+                  xs={12}
+                  sm={12}
+                  md={12}
+                  lg={i === 0 ? 12 : 6}
+                  key={i}
+                >
+                  <Video video={currentVideo} />
+                </Grid>
+              ))
+            : "Nenhum video encontrado"}
+        </Grid>
       </div>
-    )
+    );
   }
 }
 
