@@ -6,7 +6,7 @@ class Footer extends Component {
     return (
       <footer>
         <div className="container">
-          <Typography variant={'caption'} gutterBottom>©2018 - 2019 | Videogames Community 3000.</Typography>
+          <Typography variant={'caption'} gutterBottom>©2018 - 2019 | VGComm - Versão Odissey</Typography>
           {/*Uma parte da venda de itens comprados através dos botões Submarino, acima suportam diretamente o VGSC3000.*/}
           <Typography variant={'caption'}>
             <a href="#">Sobre</a>

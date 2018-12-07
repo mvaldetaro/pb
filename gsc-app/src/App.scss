@@ -48,16 +48,16 @@ ul {
 
 .jogosRecentes {
   padding: 24px 0;
+  background-color: rgba(25, 9, 28, 0.87);
 }
 
 .trailers {
   padding: 24px 0;
-  background: url("./images/bg80.jpg") no-repeat bottom center;
-  background-size: cover;
+  //background: url("./images/bg80.jpg") no-repeat bottom center;
+  //background-size: cover;
 }
 .comunidade {
   padding: 24px 0;
-  background-color: rgb(25, 9, 28);
 }
 
 .listLink {
@@ -255,7 +255,7 @@ ul {
   color: #f70e4a !important;
 }
 
-.video {
+.videos {
   margin: 40px 0;
 }
 

@@ -1,4 +1,5 @@
 import React, {Component, Fragment} from 'react';
+import {Typography} from "@material-ui/core";
 import {Link} from "react-router-dom";
 
 class Publisher extends Component {
@@ -9,7 +10,8 @@ class Publisher extends Component {
 
     return (
       <Fragment>
-        <Link to={`/${type}/${slug}`}>{title}</Link>
+        {/*<Link to={`/${type}/${slug}`}>{title}</Link>*/}
+        <Typography variant={'body1'} gutterBottom>{title}</Typography>
       </Fragment>
     )
   }
