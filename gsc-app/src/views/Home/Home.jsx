@@ -77,7 +77,9 @@ class Home extends Component {
           justify="flex-start"
           alignItems="flex-start"
           id="home">
-          <Grid item xs={12}>
+          <Grid item xs={12} style={{
+            width: '100%'
+          }}>
             <section className="hero">
               {recentHero
                 ? (
